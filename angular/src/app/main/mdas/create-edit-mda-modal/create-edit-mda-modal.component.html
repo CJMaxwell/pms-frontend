@@ -1,5 +1,5 @@
-<div appBsModal #createOrEditModal="bs-modal" (onShown)="onShown()" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createOrEditModal"
-     aria-hidden="true" [config]="{backdrop: 'static', keyboard: !saving}">
+<div appBsModal #createOrEditModal="bs-modal" (onShown)="onShown()" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createOrEditModal" aria-hidden="true" [config]="{backdrop: 'static', keyboard: !saving}">
     <div class="modal-dialog modal-lg">
 
         <div class="modal-content">
@@ -8,10 +8,13 @@
 
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        <span *ngIf="mda.id">{{"EditMda" | localize}}: {{mda.displayName}}</span>
-                        <span *ngIf="!mda.id">{{"CreateNewMda" | localize}}</span>
+                        <!-- <span *ngIf="mda.id">{{"EditMda" | localize}}: {{mda.displayName}}</span> -->
+                        <span *ngIf="mda.id"> Edit Sector: {{mda.displayName}}</span>
+                        <span *ngIf="!mda.id">New Sector</span>
+                        <!-- <span *ngIf="!mda.id">{{"CreateNewMda" | localize}}</span> -->
                     </h5>
-                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')" [disabled]="saving">
+                    <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')"
+                        [disabled]="saving">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -20,22 +23,25 @@
 
                     <div class="form-group form-md-line-input form-md-floating-label no-hint">
                         <label for="mdaDisplayName">{{"Name" | localize}} *</label>
-                        <input id="mdaDisplayName" #mdaDisplayName="ngModel" class="form-control" type="text" name="displayName" [ngClass]="{'edited': mda.displayName}" [(ngModel)]="mda.displayName" required maxlength="128">
+                        <input id="mdaDisplayName" #mdaDisplayName="ngModel" class="form-control" type="text"
+                            name="displayName" [ngClass]="{'edited': mda.displayName}" [(ngModel)]="mda.displayName"
+                            required maxlength="128">
                         <validation-messages [formCtrl]="mdaDisplayName"></validation-messages>
                     </div>
 
                     <div class="form-group m-form__group">
                         <label for="SiteName">{{l("Responsible")}}</label>
                         <div class="input-group">
-                            <input class="form-control" id="SiteName" name="siteName" [(ngModel)]="responsibleUserName" type="text"
-                                disabled>
+                            <input class="form-control" id="SiteName" name="siteName" [(ngModel)]="responsibleUserName"
+                                type="text" disabled>
                             <div class="input-group-append">
                                 <button class="btn btn-primary blue" (click)="showUserLookUpModal()" type="button"><i
                                         class="fa fa-search"></i> {{l("Pick")}}</button>
                             </div>
                         </div>
                     </div>
-                    <input class="form-control" name="responsiblePersonId" [(ngModel)]="responsiblePersonId" type="text" hidden>
+                    <input class="form-control" name="responsiblePersonId" [(ngModel)]="responsiblePersonId" type="text"
+                        hidden>
 
                     <div class="form-group">
                         <label for="Role">{{l("Role")}}</label>
@@ -45,8 +51,11 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{"Cancel" | localize}}</button>
-                    <button type="submit" class="btn btn-primary" [disabled]="!editForm.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i> <span>{{"Save" | localize}}</span></button>
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{"Cancel" |
+                        localize}}</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!editForm.form.valid"
+                        [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i>
+                        <span>{{"Save" | localize}}</span></button>
                 </div>
 
             </form>

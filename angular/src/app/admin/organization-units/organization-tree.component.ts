@@ -218,7 +218,7 @@ export class OrganizationTreeComponent extends AppComponentBase implements OnIni
             //     }
             // },
             {
-                label: this.l('AddDeliverable'),
+                label: 'Add Initiative',//this.l('AddDeliverable'),
                 disabled: !canManageDeliverables && (this.selectedOu ? this.selectedOu.data.parentId !== null : true),
                 command: () => {
                     this.addDeliverable(
@@ -290,7 +290,7 @@ export class OrganizationTreeComponent extends AppComponentBase implements OnIni
     }
 
     addMda(): void {
-        this.createOrEditMdaModal.show({ parentId: null});
+        this.createOrEditMdaModal.show({ parentId: null });
     }
 
     addDeliverable(parentId: number, parentName: string): void {
@@ -404,17 +404,17 @@ export class OrganizationTreeComponent extends AppComponentBase implements OnIni
         if (!parentId) {
             this.generatingReport = true;
             this._deliverableServiceProxy.getMdaDeliverablesToExcel(ouId)
-            .pipe(finalize(() => this.generatingReport = false))
-            .subscribe(result => {
-                this._fileDownloadService.downloadTempFile(result);
-            });
+                .pipe(finalize(() => this.generatingReport = false))
+                .subscribe(result => {
+                    this._fileDownloadService.downloadTempFile(result);
+                });
         } else {
             this.generatingReport = true;
             this._deliverableServiceProxy.getDeliverableToExcel(ouId)
-            .pipe(finalize(() => this.generatingReport = false))
-            .subscribe(result => {
-                this._fileDownloadService.downloadTempFile(result);
-            });
+                .pipe(finalize(() => this.generatingReport = false))
+                .subscribe(result => {
+                    this._fileDownloadService.downloadTempFile(result);
+                });
         }
     }
 }

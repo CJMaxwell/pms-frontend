@@ -1,20 +1,18 @@
 <div class="row">
     <div class="col-12">
-        <button *ngIf="('Pages.PerformanceActivity.Create' | permission) && organizationUnit" (click)="openAddModal()" class="btn btn-primary float-right mb-3">
+        <button *ngIf="('Pages.PerformanceActivity.Create' | permission) && organizationUnit" (click)="openAddModal()"
+            class="btn btn-primary float-right mb-3">
             <i class="fa fa-plus"></i> {{"AddActivity" | localize}}
         </button>
     </div>
     <div class="col-12">
         <div id="OuActivitiesTable">
             <!--<Primeng-TurboTable-Start>-->
-            <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading" [hidden]="!organizationUnit">
-                <p-table #dataTable
-                         (onLazyLoad)="getPerformanceActivities($event)"
-                         [value]="primengTableHelper.records"
-                         rows="{{primengTableHelper.defaultRecordsCountPerPage}}"
-                         [paginator]="false"
-                         [lazy]="true"
-                         [responsive]="primengTableHelper.isResponsive">
+            <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading"
+                [hidden]="!organizationUnit">
+                <p-table #dataTable (onLazyLoad)="getPerformanceActivities($event)" [value]="primengTableHelper.records"
+                    rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
+                    [responsive]="primengTableHelper.isResponsive">
                     <ng-template pTemplate="header">
                         <tr>
                             <th style="width: 35%">{{'Actions' | localize}}</th>
@@ -32,21 +30,26 @@
                         <tr>
                             <td>
                                 <div class="btn-group m-btn-group m-btn-group--pill" dropdown container="body">
-                                    <button (click)="viewActivity(record.performanceActivity.id)" class="btn btn-outline-success btn-sm btn-pill">
+                                    <button (click)="viewActivity(record.performanceActivity.id)"
+                                        class="btn btn-outline-success btn-sm btn-pill">
                                         <i class="fa fa-info-circle" style="font-size: 1.2rem !important;"></i>
-                                        View 
+                                        View
                                     </button>
-                                    <button class="dropdown-toggle btn  btn-outline-success btn-sm btn-pill dropdown-toggle-split" dropdownToggle>
+                                    <button
+                                        class="dropdown-toggle btn  btn-outline-success btn-sm btn-pill dropdown-toggle-split"
+                                        dropdownToggle>
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" *dropdownMenu>
                                         <li *ngIf="isGranted('Pages.PerformanceActivity.Update')">
-                                            <a href="javascript:;" (click)="updateProgress(record.performanceActivity.id)">
+                                            <a href="javascript:;"
+                                                (click)="updateProgress(record.performanceActivity.id)">
                                                 Update Progress
                                             </a>
                                         </li>
                                         <li *ngIf="isGranted('Pages.PerformanceActivity.Edit')">
-                                            <a href="javascript:;" (click)="editActivity(record.performanceActivity.id)">
+                                            <a href="javascript:;"
+                                                (click)="editActivity(record.performanceActivity.id)">
                                                 Edit
                                             </a>
                                         </li>
@@ -83,11 +86,10 @@
                     {{'NoData' | localize}}
                 </div>
                 <div class="primeng-paging-container">
-                    <p-paginator [rows]="primengTableHelper.defaultRecordsCountPerPage"
-                                 #paginator
-                                 (onPageChange)="getPerformanceActivities($event)"
-                                 [totalRecords]="primengTableHelper.totalRecordsCount"
-                                 [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+                    <p-paginator [rows]="primengTableHelper.defaultRecordsCountPerPage" #paginator
+                        (onPageChange)="getPerformanceActivities($event)"
+                        [totalRecords]="primengTableHelper.totalRecordsCount"
+                        [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                     </p-paginator>
                     <span class="total-records-count">
                         {{'TotalRecordsCount' | localize:primengTableHelper.totalRecordsCount}}
@@ -100,10 +102,12 @@
 </div>
 
 <div *ngIf="!organizationUnit" class="text-muted">
-    {{"SelectAnOrganizationUnitToSeeActivities" | localize}}
+    <!-- {{"SelectAnOrganizationUnitToSeeActivities" | localize}} -->
+    Select an initiative to see activities.
 </div>
 
 <app-create-edit-activity-modal #addActivityModal (modalSave)="reloadPage()"></app-create-edit-activity-modal>
-<app-update-activity-progress-modal #updateActivityModal (modalSave)="reloadPage()"></app-update-activity-progress-modal>
+<app-update-activity-progress-modal #updateActivityModal (modalSave)="reloadPage()">
+</app-update-activity-progress-modal>
 <entityTypeHistoryModal #entityTypeHistoryModal></entityTypeHistoryModal>
-<app-view-activity-progress-log-modal #progressUpdateLogModal ></app-view-activity-progress-log-modal>
+<app-view-activity-progress-log-modal #progressUpdateLogModal></app-view-activity-progress-log-modal>

@@ -4,11 +4,13 @@
             <div [class]="containerClass">
                 <div class="kt-subheader__main">
                     <h3 class="kt-subheader__title">
-                        <span>{{l("Mdas")}}</span>
+                        <span>Sectors</span>
+                        <!-- <span>{{l("Mdas")}}</span> -->
                     </h3>
                     <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                     <span class="kt-subheader__desc">
-                        {{"MdasHeaderInfo" | localize}}
+                        <!-- {{"MdasHeaderInfo" | localize}} -->
+                        Manage Sector
                     </span>
                 </div>
                 <div class="kt-subheader__toolbar">
@@ -17,7 +19,7 @@
                             <i class="fa fa-file-excel"></i> Download Report for All MDAs
                         </button>
                         <button *ngIf="isGranted('Pages.MDA.Create')" (click)="createMDA(null)" class="btn btn-primary">
-                            <i class="fa fa-plus"></i> New MDA
+                            <i class="fa fa-plus"></i> New Sector
                         </button>
                     </div>
                 </div>
@@ -26,8 +28,8 @@
         <div [class]="containerClass + ' kt-grid__item kt-grid__item--fluid'">
             <div class="kt-portlet kt-portlet--mobile">
                 <div *ngIf="generatingReport" class="progress progress-lg mt-2">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
-                        role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar"
+                        aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                         Generating Reporting...
                     </div>
                 </div>
@@ -84,10 +86,10 @@
                                             [hidden]="!isGrantedAny('Pages.MDA.Edit', 'Pages.MDA.Delete')">
                                             {{'Actions' | localize}}</th>
 
-                                            <th style="width: 25%" pSortableColumn="name">
-                                                {{'Name' | localize}}
-                                                <p-sortIcon field="displayName"></p-sortIcon>
-                                            </th>
+                                        <th style="width: 25%" pSortableColumn="name">
+                                            {{'Name' | localize}}
+                                            <p-sortIcon field="displayName"></p-sortIcon>
+                                        </th>
 
                                         <th style="width: 25%" pSortableColumn="responsiblePersonName">
                                             {{'ResponsiblePerson' | localize}}

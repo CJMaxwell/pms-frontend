@@ -1,24 +1,22 @@
 <div class="row">
     <div class="col-12">
-        <button *ngIf="('Pages.Deliverable.Review' | permission) && organizationUnit" (click)="openAddModal()" class="btn btn-primary float-right mb-3">
+        <button *ngIf="('Pages.Deliverable.Review' | permission) && organizationUnit" (click)="openAddModal()"
+            class="btn btn-primary float-right mb-3">
             <i class="fa fa-plus"></i> {{"AddReview" | localize}}
         </button>
     </div>
     <div class="col-12">
         <div id="OuReviewsTable">
             <!--<Primeng-TurboTable-Start>-->
-            <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading" [hidden]="!organizationUnit">
-                <p-table #dataTable
-                         (onLazyLoad)="getPerformanceReviews($event)"
-                         [value]="primengTableHelper.records"
-                         rows="{{primengTableHelper.defaultRecordsCountPerPage}}"
-                         [paginator]="false"
-                         [lazy]="true"
-                         [responsive]="primengTableHelper.isResponsive">
+            <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading"
+                [hidden]="!organizationUnit">
+                <p-table #dataTable (onLazyLoad)="getPerformanceReviews($event)" [value]="primengTableHelper.records"
+                    rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
+                    [responsive]="primengTableHelper.isResponsive">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th style="width: 35%"
-                                [hidden]="!('Pages.Deliverable.Review' | permission)">{{'Actions' | localize}}</th>
+                            <th style="width: 35%" [hidden]="!('Pages.Deliverable.Review' | permission)">{{'Actions' |
+                                localize}}</th>
                             <th pSortableColumn="name">
                                 {{'Review' | localize}}
                                 <p-sortIcon field="name"></p-sortIcon>
@@ -29,11 +27,14 @@
                         <tr>
                             <td [hidden]="!('Pages.Deliverable.Review' | permission)">
                                 <div class="btn-group m-btn-group m-btn-group--pill" dropdown container="body">
-                                    <button (click)="viewReview(record.review.id)" class="btn btn-outline-success btn-sm btn-pill">
+                                    <button (click)="viewReview(record.review.id)"
+                                        class="btn btn-outline-success btn-sm btn-pill">
                                         <i class="fa fa-info-circle" style="font-size: 1.2rem !important;"></i>
-                                        View 
+                                        View
                                     </button>
-                                    <button *ngIf="isGranted('Pages.Deliverable.Review')" class="dropdown-toggle btn  btn-outline-success btn-sm btn-pill dropdown-toggle-split" dropdownToggle>
+                                    <button *ngIf="isGranted('Pages.Deliverable.Review')"
+                                        class="dropdown-toggle btn  btn-outline-success btn-sm btn-pill dropdown-toggle-split"
+                                        dropdownToggle>
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" *dropdownMenu>
@@ -65,11 +66,10 @@
                     {{'NoData' | localize}}
                 </div>
                 <div class="primeng-paging-container">
-                    <p-paginator [rows]="primengTableHelper.defaultRecordsCountPerPage"
-                                 #paginator
-                                 (onPageChange)="getPerformanceReviews($event)"
-                                 [totalRecords]="primengTableHelper.totalRecordsCount"
-                                 [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+                    <p-paginator [rows]="primengTableHelper.defaultRecordsCountPerPage" #paginator
+                        (onPageChange)="getPerformanceReviews($event)"
+                        [totalRecords]="primengTableHelper.totalRecordsCount"
+                        [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                     </p-paginator>
                     <span class="total-records-count">
                         {{'TotalRecordsCount' | localize:primengTableHelper.totalRecordsCount}}
@@ -82,7 +82,8 @@
 </div>
 
 <div *ngIf="!organizationUnit" class="text-muted">
-    {{"SelectAnOrganizationUnitToSeeReviews" | localize}}
+    <!-- {{"SelectAnOrganizationUnitToSeeReviews" | localize}} -->
+    Select an initiative to see other informations.
 </div>
 
 <app-create-edit-review-modal #addReviewModal (modalSave)="reloadPage()"></app-create-edit-review-modal>

@@ -4,11 +4,13 @@
             <div [class]="containerClass">
                 <div class="kt-subheader__main">
                     <h3 class="kt-subheader__title">
-                        <span>{{l("PriorityAreas")}}</span>
+                        <!-- <span>{{l("PriorityAreas")}}</span> -->
+                        Opportunity Areas
                     </h3>
                     <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                     <span class="kt-subheader__desc">
-                        {{"PriorityAreasHeaderInfo" | localize}}
+                        <!-- {{"PriorityAreasHeaderInfo" | localize}} -->
+                        Manage opportunity areas
                     </span>
                 </div>
                 <div class="kt-subheader__toolbar">
@@ -82,14 +84,19 @@
                                 </ng-template>
                                 <ng-template pTemplate="body" let-record="$implicit">
                                     <tr>
-                                        <td style="width: 130px" >
-                                            <div class="btn-group m-btn-group m-btn-group--pill" dropdown container="body">
-                                                <button (click)="viewPriorityArea(record.priorityArea.id)" class="btn btn-outline-success btn-sm btn-pill">
-                                                    <i class="fa fa-info-circle" style="font-size: 1.2rem !important;"></i>
-                                                    View 
+                                        <td style="width: 130px">
+                                            <div class="btn-group m-btn-group m-btn-group--pill" dropdown
+                                                container="body">
+                                                <button (click)="viewPriorityArea(record.priorityArea.id)"
+                                                    class="btn btn-outline-success btn-sm btn-pill">
+                                                    <i class="fa fa-info-circle"
+                                                        style="font-size: 1.2rem !important;"></i>
+                                                    View
                                                 </button>
-                                                <button [hidden]="!isGrantedAny('Pages.PriorityAreas.Edit', 'Pages.PriorityAreas.Delete')"
-                                                    class="dropdown-toggle btn  btn-outline-success btn-sm btn-pill dropdown-toggle-split" dropdownToggle>
+                                                <button
+                                                    [hidden]="!isGrantedAny('Pages.PriorityAreas.Edit', 'Pages.PriorityAreas.Delete')"
+                                                    class="dropdown-toggle btn  btn-outline-success btn-sm btn-pill dropdown-toggle-split"
+                                                    dropdownToggle>
                                                     <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" *dropdownMenu>
@@ -103,7 +110,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            
+
                                         </td>
                                         <td style="width: 300px">
                                             <span class="ui-column-title"> {{'Name' | localize}}</span>

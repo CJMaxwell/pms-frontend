@@ -1,24 +1,22 @@
 <div class="row">
     <div class="col-12">
-        <button *ngIf="('Pages.PerformanceIndicator.Create' | permission) && organizationUnit" (click)="openAddModal()" class="btn btn-primary float-right mb-3">
+        <button *ngIf="('Pages.PerformanceIndicator.Create' | permission) && organizationUnit" (click)="openAddModal()"
+            class="btn btn-primary float-right mb-3">
             <i class="fa fa-plus"></i> {{"AddIndicator" | localize}}
         </button>
     </div>
     <div class="col-12">
         <div id="OuIndicatorsTable">
             <!--<Primeng-TurboTable-Start>-->
-            <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading" [hidden]="!organizationUnit">
-                <p-table #dataTable
-                         (onLazyLoad)="getPerformanceIndicators($event)"
-                         [value]="primengTableHelper.records"
-                         rows="{{primengTableHelper.defaultRecordsCountPerPage}}"
-                         [paginator]="false"
-                         [lazy]="true"
-                         [responsive]="primengTableHelper.isResponsive">
+            <div class="primeng-datatable-container" [busyIf]="primengTableHelper.isLoading"
+                [hidden]="!organizationUnit">
+                <p-table #dataTable (onLazyLoad)="getPerformanceIndicators($event)" [value]="primengTableHelper.records"
+                    rows="{{primengTableHelper.defaultRecordsCountPerPage}}" [paginator]="false" [lazy]="true"
+                    [responsive]="primengTableHelper.isResponsive">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th style="width: 35%"
-                                [hidden]="!('Pages.PerformanceIndicator' | permission)">{{'Actions' | localize}}</th>
+                            <th style="width: 35%" [hidden]="!('Pages.PerformanceIndicator' | permission)">{{'Actions' |
+                                localize}}</th>
                             <th pSortableColumn="name">
                                 {{'Indicator' | localize}}
                                 <p-sortIcon field="name"></p-sortIcon>
@@ -33,21 +31,26 @@
                         <tr>
                             <td [hidden]="!('Pages.PerformanceIndicator' | permission)">
                                 <div class="btn-group m-btn-group m-btn-group--pill" dropdown container="body">
-                                    <button (click)="viewIndicator(record.performanceIndicator.id)" class="btn btn-outline-success btn-sm btn-pill">
+                                    <button (click)="viewIndicator(record.performanceIndicator.id)"
+                                        class="btn btn-outline-success btn-sm btn-pill">
                                         <i class="fa fa-info-circle" style="font-size: 1.2rem !important;"></i>
-                                        View 
+                                        View
                                     </button>
-                                    <button *ngIf="isGranted('Pages.PerformanceIndicator')" class="dropdown-toggle btn  btn-outline-success btn-sm btn-pill dropdown-toggle-split" dropdownToggle>
+                                    <button *ngIf="isGranted('Pages.PerformanceIndicator')"
+                                        class="dropdown-toggle btn  btn-outline-success btn-sm btn-pill dropdown-toggle-split"
+                                        dropdownToggle>
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" *dropdownMenu>
                                         <li *ngIf="isGranted('Pages.PerformanceIndicator.Edit') || !record.inherited">
-                                            <a href="javascript:;" (click)="editIndicator(record.performanceIndicator.id)">
+                                            <a href="javascript:;"
+                                                (click)="editIndicator(record.performanceIndicator.id)">
                                                 Edit
                                             </a>
                                         </li>
                                         <li *ngIf="isGranted('Pages.PerformanceIndicator.Delete')">
-                                            <a href="javascript:;" (click)="deleteIndicator(record.performanceIndicator)">
+                                            <a href="javascript:;"
+                                                (click)="deleteIndicator(record.performanceIndicator)">
                                                 Delete
                                             </a>
                                         </li>
@@ -67,9 +70,9 @@
                             <td>
                                 <span class="ui-column-title">{{'Name' | localize}}</span>
                                 {{record.performanceIndicator.name}}
-                                <span *ngIf="record.inherited"
-                                    class="kt-badge kt-badge--brand kt-badge--inline" data-toggle="tooltip"
-                                    title="This indicator was inherited from the MDA." data-placement="top">
+                                <span *ngIf="record.inherited" class="kt-badge kt-badge--brand kt-badge--inline"
+                                    data-toggle="tooltip" title="This indicator was inherited from the MDA."
+                                    data-placement="top">
                                     Inherited
                                 </span>
                             </td>
@@ -84,11 +87,10 @@
                     {{'NoData' | localize}}
                 </div>
                 <div class="primeng-paging-container">
-                    <p-paginator [rows]="primengTableHelper.defaultRecordsCountPerPage"
-                                 #paginator
-                                 (onPageChange)="getPerformanceIndicators($event)"
-                                 [totalRecords]="primengTableHelper.totalRecordsCount"
-                                 [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+                    <p-paginator [rows]="primengTableHelper.defaultRecordsCountPerPage" #paginator
+                        (onPageChange)="getPerformanceIndicators($event)"
+                        [totalRecords]="primengTableHelper.totalRecordsCount"
+                        [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
                     </p-paginator>
                     <span class="total-records-count">
                         {{'TotalRecordsCount' | localize:primengTableHelper.totalRecordsCount}}
@@ -101,7 +103,8 @@
 </div>
 
 <div *ngIf="!organizationUnit" class="text-muted">
-    {{"SelectAnOrganizationUnitToSeeIndicators" | localize}}
+    <!-- {{"SelectAnOrganizationUnitToSeeIndicators" | localize}} -->
+    Select an initiative to see indicators.
 </div>
 
 <app-update-indicator-progress #updateIndicatorModal (modalSave)="reloadPage()"></app-update-indicator-progress>
