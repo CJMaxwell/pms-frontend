@@ -21,10 +21,10 @@ export class AppNavigationService {
             new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
             new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
-            new AppMenuItem('PriorityAreas', 'Pages.PriorityAreas', 'flaticon-app', '/app/main/priority-areas'),
-            new AppMenuItem('Deliverables', 'Pages.Deliverable', 'flaticon-map', '/app/main/deliverables'),
-             new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [], [
-                new AppMenuItem('MDAs', 'Pages.MDA', 'flaticon-list-3', '/app/main/mda'),
+            new AppMenuItem('Opportunity Areas', 'Pages.PriorityAreas', 'flaticon-app', '/app/main/priority-areas'),
+            new AppMenuItem('Initiatives', 'Pages.Deliverable', 'flaticon-map', '/app/main/deliverables'),
+            new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [], [
+                new AppMenuItem('Sectors', 'Pages.MDA', 'flaticon-list-3', '/app/main/mda'),
                 new AppMenuItem('Roles', 'Pages.Administration.Roles', 'flaticon-suitcase', '/app/admin/roles'),
                 new AppMenuItem('Users', 'Pages.Administration.Users', 'flaticon-users', '/app/admin/users'),
                 // new AppMenuItem('Languages', 'Pages.Administration.Languages', 'flaticon-tabs', '/app/admin/languages', ['/app/admin/languages/{name}/texts']),
