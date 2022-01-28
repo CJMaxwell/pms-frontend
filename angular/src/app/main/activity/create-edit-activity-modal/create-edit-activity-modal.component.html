@@ -39,7 +39,8 @@
                                 name="performanceActivity_PlannedStartDate">
                         </div>
                         <div class="col-md-6">
-                            <label for="performanceActivity_PlannedCompletionDate">{{l("PlannedCompletionDate")}}</label>
+                            <label
+                                for="performanceActivity_PlannedCompletionDate">{{l("PlannedCompletionDate")}}</label>
                             <input class="form-control m-input" type="datetime" bsDatepicker
                                 [(ngModel)]="plannedCompletionDate" id="performanceActivity_PlannedCompletionDate"
                                 name="performanceActivity_PlannedCompletionDate">
@@ -61,24 +62,42 @@
                         </div>
                     </div>
 
+                    <!-- GGtt -->
+                    <!-- <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="performanceActivity_primaryInitiativeOwner">Primary Initiative Owner</label>
+                            <input type="text" id="performanceActivity_primaryInitiativeOwner" class="form-control"
+                                [(ngModel)]="performanceActivity?.primaryInitiativeOwner" name="primaryInitiativeOwner"
+                                required />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="performanceActivity_secondaryInitiativeOwner">Secondary Initiative Owner</label>
+                            <input type="text" id="performanceActivity_secondaryInitiativeOwner" class="form-control"
+                                [(ngModel)]="performanceActivity?.secondaryInitiativeOwner"
+                                name="secondaryInitiativeOwner" required />
+                        </div>
+                    </div> -->
+
                     <div class="form-group row">
                         <div class="col-md-6">
                             <label for="deliverableBudget">{{"Budget" | localize}}</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">NGN</span>								
+                                    <span class="input-group-text">NGN</span>
                                 </div>
-                                <input id="deliverableBudget"  class="form-control" name="deliverableBudget" [(ngModel)]="performanceActivity.budgetAmount" />
+                                <input id="deliverableBudget" class="form-control" name="deliverableBudget"
+                                    [(ngModel)]="performanceActivity.budgetAmount" />
                             </div>
                         </div>
-                        
+
                         <div class="col-md-6">
                             <label for="deliverableBudget">{{"Amount Spent" | localize}}</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">NGN</span>								
+                                    <span class="input-group-text">NGN</span>
                                 </div>
-                                <input id="deliverableBudget"  class="form-control" name="deliverableBudget" [(ngModel)]="performanceActivity.amountSpent" />
+                                <input id="deliverableBudget" class="form-control" name="deliverableBudget"
+                                    [(ngModel)]="performanceActivity.amountSpent" />
                             </div>
                         </div>
                     </div>

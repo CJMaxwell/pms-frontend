@@ -7,7 +7,8 @@
                     <h4 class="modal-title">
                         <!-- <span *ngIf="priorityArea.id">{{l("EditPriorityArea")}}</span> -->
                         <span *ngIf="priorityArea.id">Edit Opportunity Area</span>
-                        <span *ngIf="!priorityArea.id">{{l("CreateNewPriorityArea")}}</span>
+                        <!-- <span *ngIf="!priorityArea.id">{{l("CreateNewPriorityArea")}}</span> -->
+                        <span *ngIf="!priorityArea.id">New Opportunity Area</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" aria-label="Close" [disabled]="saving">
                         <span aria-hidden="true">&times;</span>
@@ -24,6 +25,14 @@
                         <label for="PriorityArea_Description">{{l("Description")}}</label>
                         <textarea id="PriorityArea_Description" class="form-control"
                             [(ngModel)]="priorityArea.description" name="Description" rows="5"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PriorityArea_PartnerResponsible">Partner Responsible</label>
+                        <!-- <textarea id="PriorityArea_PartnerResponsible" class="form-control" [(ngModel)]="priorityArea.partnerResponsible"
+                            name="PartnerResponsible" rows="5"></textarea> -->
+                        <input type="text" id="PriorityArea_PartnerResponsible" class="form-control"
+                            [(ngModel)]="priorityArea.partnerResponsible" name="partnerResponsible" required />
                     </div>
                 </div>
                 <div class="modal-footer">

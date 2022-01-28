@@ -40,13 +40,21 @@
                                         dropdownToggle>
                                         <span class="caret"></span>
                                     </button>
+                                    <div class="ml-1">
+                                        <button (click)="updateProgress(record.performanceActivity.id)"
+                                            class="btn btn-outline-success btn-sm btn-pill">
+                                            <!-- <i class="fa fa-info-circle" style="font-size: 1.2rem !important;"></i> -->
+                                            Update Activity
+                                        </button>
+                                    </div>
+
                                     <ul class="dropdown-menu" *dropdownMenu>
-                                        <li *ngIf="isGranted('Pages.PerformanceActivity.Update')">
+                                        <!-- <li *ngIf="isGranted('Pages.PerformanceActivity.Update')">
                                             <a href="javascript:;"
                                                 (click)="updateProgress(record.performanceActivity.id)">
                                                 Update Progress
                                             </a>
-                                        </li>
+                                        </li> -->
                                         <li *ngIf="isGranted('Pages.PerformanceActivity.Edit')">
                                             <a href="javascript:;"
                                                 (click)="editActivity(record.performanceActivity.id)">

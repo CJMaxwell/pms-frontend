@@ -49,7 +49,7 @@ export class ViewPriorityAreaComponent extends AppComponentBase implements OnIni
     mdaList: NameValueOfInt64[] = new Array();
     selectedMda = -1;
     selectedDeliverableId = -1;
-    selectDeliverableDefaultLabel = 'All deliverables';
+    selectDeliverableDefaultLabel = 'All Initiatives';
 
     priorityArea: CreateOrEditPriorityAreaDto = new CreateOrEditPriorityAreaDto();
     percentageAchieved = 0;

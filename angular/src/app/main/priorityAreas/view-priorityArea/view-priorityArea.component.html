@@ -7,7 +7,7 @@
             <div [class]="containerClass">
                 <div class="kt-subheader__main">
                     <h3 class="kt-subheader__title">
-                        <span>Priority Area </span>
+                        <span>Opportunity Area </span>
                     </h3>
                     <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                     <span class="kt-subheader__desc">
@@ -87,7 +87,7 @@
                         <div class="kt-portlet__head">
                             <div class="kt-portlet__head-label">
                                 <h3 class="kt-portlet__head-title">
-                                    Deliverables
+                                    Initiatives
                                 </h3>
                             </div>
                             <div class="kt-portlet__head-toolbar">
@@ -96,10 +96,10 @@
                         </div>
                         <div class="kt-portlet__body">
                             <div class="form-group no-print">
-                                <label>Select MDA</label>
+                                <label>Select Sector</label>
                                 <select class="form-control m-input" name="mdaFilter" id="mdaFilter"
                                     [(ngModel)]="selectedMda" (change)="filerByMda()">
-                                    <option [value]="-1">All MDAs</option>
+                                    <option [value]="-1">All Sectors</option>
                                     <option *ngFor="let mda of mdaList" [value]="mda.value">{{mda.name}}</option>
                                 </select>
                             </div>
@@ -109,7 +109,7 @@
                                         <span
                                             (click)="selectedDeliverableId = item.deliverable.id; filterByDeliverable();">
                                             {{item.deliverable.displayName}}<br>
-                                            <small class="form-text text-muted">MDA: {{ item.mdaName }}</small>
+                                            <small class="form-text text-muted">Sector: {{ item.mdaName }}</small>
                                             <div class="progress progress-sm mt-2">
                                                 <div class="progress-bar progress-bar-striped progress-bar-animated bg-{{item.percentageAchieved === 100 ? 'success' : 'warning'}}"
                                                     role="progressbar" aria-valuenow="65" aria-valuemin="0"
@@ -117,18 +117,20 @@
                                                     {{item.percentageAchieved}}%
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="row">
                                                 <div class="col-6">
                                                     <small class="form-text text-muted">
-                                                        Budget Amount: 
-                                                        <span *ngIf="item.deliverable.budgetAmount">NGN {{item.deliverable.budgetAmount | number: '1.2-2'}}</span>
-                                                    </small>                                                
+                                                        Potential Revenue:
+                                                        <span *ngIf="item.deliverable.budgetAmount">NGN
+                                                            {{item.deliverable.budgetAmount | number: '1.2-2'}}</span>
+                                                    </small>
                                                 </div>
                                                 <div class="col-6">
                                                     <small class="form-text text-muted">
-                                                        Amount Spent:
-                                                        <span *ngIf="item.deliverable.amountSpent">NGN {{item.deliverable.amountSpent | number: '1.2-2'}}</span>
+                                                        Actual Revenue:
+                                                        <span *ngIf="item.deliverable.amountSpent">NGN
+                                                            {{item.deliverable.amountSpent | number: '1.2-2'}}</span>
                                                     </small>
                                                 </div>
                                             </div>
@@ -160,7 +162,7 @@
                                             <span [innerHTML]="review.review.challenges"></span><br>
                                             <small class="form-text text-muted">Recommendations:</small><br>
                                             <span [innerHTML]="review.review.recommendation"></span><br><br>
-                                            <small class="form-text text-muted">Deliverable:
+                                            <small class="form-text text-muted">Initiative:
                                                 {{ review.deliverableName }}</small>
                                         </div>
                                         <div class="kt-separator kt-separator--border-solid"></div>
@@ -183,7 +185,7 @@
                         <div class="kt-portlet__body">
                             <div class="form-group no-print">
                                 <div class="">
-                                    <label>Select a Deliverable</label>
+                                    <label>Select an Initiative</label>
                                     <select class="form-control m-input" name="deliverableFilter" id="deliverableFilter"
                                         [(ngModel)]="selectedDeliverableId" (change)="filterByDeliverable()">
                                         <option [value]="-1">{{selectDeliverableDefaultLabel}}</option>
@@ -198,7 +200,7 @@
                                     <div *ngFor="let indicator of filteredIndicators">
                                         <div>
                                             {{indicator.performanceIndicator.name}}<br>
-                                            <small class="form-text text-muted">Deliverable:
+                                            <small class="form-text text-muted">Initiative:
                                                 {{ indicator.deliverableName }}</small>
                                             <div class="progress progress-sm mt-2">
                                                 <div class="progress-bar progress-bar-striped progress-bar-animated bg-{{ indicator.performanceIndicator.percentageAchieved === 100 ? 'success' : 'warning'}}"
@@ -211,18 +213,28 @@
                                             <div *ngFor="let target of indicator.targets" class="row">
                                                 <div class="col-6">
                                                     <small class="form-text text-muted">
-                                                        Target Value: <span *ngIf="indicator.performanceIndicator.unit == unitEnum.Money">NGN</span>
-                                                                <span *ngIf="indicator.performanceIndicator.dataType == dataTypeEnum.Number">{{target.target.target | number:'1.2-2'}}</span>
-                                                                <span *ngIf="indicator.performanceIndicator.dataType != dataTypeEnum.Number">{{target.target.target}}</span>
-                                                                <span *ngIf="indicator.performanceIndicator.unit == unitEnum.Percentage">%</span> 
+                                                        Target Value: <span
+                                                            *ngIf="indicator.performanceIndicator.unit == unitEnum.Money">NGN</span>
+                                                        <span
+                                                            *ngIf="indicator.performanceIndicator.dataType == dataTypeEnum.Number">{{target.target.target
+                                                            | number:'1.2-2'}}</span>
+                                                        <span
+                                                            *ngIf="indicator.performanceIndicator.dataType != dataTypeEnum.Number">{{target.target.target}}</span>
+                                                        <span
+                                                            *ngIf="indicator.performanceIndicator.unit == unitEnum.Percentage">%</span>
                                                     </small>
                                                 </div>
                                                 <div class="col-6">
                                                     <small class="form-text text-muted">
-                                                        Actual Value: <span *ngIf="indicator.performanceIndicator.unit == unitEnum.Money && target.target.actual">NGN</span> 
-                                                                  <span *ngIf="indicator.performanceIndicator.dataType == dataTypeEnum.Number">{{target.target.actual | number:'1.2-2'}}</span>
-                                                                  <span *ngIf="indicator.performanceIndicator.dataType != dataTypeEnum.Number">{{target.target.actual}}</span>
-                                                                  <span *ngIf="indicator.performanceIndicator.unit == unitEnum.Percentage && target.target.actual">%</span> 
+                                                        Actual Value: <span
+                                                            *ngIf="indicator.performanceIndicator.unit == unitEnum.Money && target.target.actual">NGN</span>
+                                                        <span
+                                                            *ngIf="indicator.performanceIndicator.dataType == dataTypeEnum.Number">{{target.target.actual
+                                                            | number:'1.2-2'}}</span>
+                                                        <span
+                                                            *ngIf="indicator.performanceIndicator.dataType != dataTypeEnum.Number">{{target.target.actual}}</span>
+                                                        <span
+                                                            *ngIf="indicator.performanceIndicator.unit == unitEnum.Percentage && target.target.actual">%</span>
                                                     </small>
                                                 </div>
                                             </div>
@@ -261,46 +273,62 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <small class="form-text text-muted">
-                                                    Budget Amount: 
-                                                    <span *ngIf="activty.performanceActivity.budgetAmount">NGN {{activty.performanceActivity.budgetAmount | number: '1.2-2'}}</span>
+                                                        Potential Revenue:
+                                                        <span *ngIf="activty.performanceActivity.budgetAmount">NGN
+                                                            {{activty.performanceActivity.budgetAmount | number:
+                                                            '1.2-2'}}</span>
                                                     </small>
                                                 </div>
                                                 <div class="col-6">
                                                     <small class="form-text text-muted">
-                                                    Amount Spent:
-                                                    <span *ngIf="activty.performanceActivity.amountSpent">NGN {{activty.performanceActivity.amountSpent | number: '1.2-2'}}</span>
-                                                    </small>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <small class="form-text text-muted">
-                                                        Planned Start Date: 
-                                                        <span *ngIf="activty.performanceActivity.plannedStartDate">{{activty.performanceActivity.plannedStartDate | momentFormat: 'DD-MMM-YYYY'}}</span>
-                                                        <span *ngIf="!activty.performanceActivity.plannedStartDate">-</span>
-                                                    </small>
-                                                </div>
-                                                <div class="col-6">
-                                                    <small class="form-text text-muted">
-                                                        Actual Start Date: 
-                                                        <span *ngIf="activty.performanceActivity.actualStartDate">{{activty.performanceActivity.actualStartDate | momentFormat: 'DD-MMM-YYYY'}}</span>
-                                                        <span *ngIf="!activty.performanceActivity.actualStartDate">-</span>
+                                                        Actual Revenue:
+                                                        <span *ngIf="activty.performanceActivity.amountSpent">NGN
+                                                            {{activty.performanceActivity.amountSpent | number:
+                                                            '1.2-2'}}</span>
                                                     </small>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
                                                     <small class="form-text text-muted">
-                                                        Planned Completion Date: 
-                                                        <span *ngIf="activty.performanceActivity.plannedCompletionDate">{{activty.performanceActivity.plannedCompletionDate | momentFormat: 'DD-MMM-YYYY'}}</span>
-                                                        <span *ngIf="!activty.performanceActivity.plannedCompletionDate">-</span>
+                                                        Planned Start Date:
+                                                        <span
+                                                            *ngIf="activty.performanceActivity.plannedStartDate">{{activty.performanceActivity.plannedStartDate
+                                                            | momentFormat: 'DD-MMM-YYYY'}}</span>
+                                                        <span
+                                                            *ngIf="!activty.performanceActivity.plannedStartDate">-</span>
                                                     </small>
                                                 </div>
                                                 <div class="col-6">
                                                     <small class="form-text text-muted">
-                                                        Actual Completion Date: 
-                                                        <span *ngIf="activty.performanceActivity.actualCompletionDate">{{activty.performanceActivity.actualCompletionDate | momentFormat: 'DD-MMM-YYYY'}}</span>
-                                                        <span *ngIf="!activty.performanceActivity.actualCompletionDate">-</span>
+                                                        Actual Start Date:
+                                                        <span
+                                                            *ngIf="activty.performanceActivity.actualStartDate">{{activty.performanceActivity.actualStartDate
+                                                            | momentFormat: 'DD-MMM-YYYY'}}</span>
+                                                        <span
+                                                            *ngIf="!activty.performanceActivity.actualStartDate">-</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <small class="form-text text-muted">
+                                                        Planned Completion Date:
+                                                        <span
+                                                            *ngIf="activty.performanceActivity.plannedCompletionDate">{{activty.performanceActivity.plannedCompletionDate
+                                                            | momentFormat: 'DD-MMM-YYYY'}}</span>
+                                                        <span
+                                                            *ngIf="!activty.performanceActivity.plannedCompletionDate">-</span>
+                                                    </small>
+                                                </div>
+                                                <div class="col-6">
+                                                    <small class="form-text text-muted">
+                                                        Actual Completion Date:
+                                                        <span
+                                                            *ngIf="activty.performanceActivity.actualCompletionDate">{{activty.performanceActivity.actualCompletionDate
+                                                            | momentFormat: 'DD-MMM-YYYY'}}</span>
+                                                        <span
+                                                            *ngIf="!activty.performanceActivity.actualCompletionDate">-</span>
                                                     </small>
                                                 </div>
                                             </div>

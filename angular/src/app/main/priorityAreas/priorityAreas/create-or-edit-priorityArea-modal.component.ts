@@ -1,4 +1,4 @@
-﻿import { Component, ViewChild, Injector, Output, EventEmitter} from '@angular/core';
+﻿import { Component, ViewChild, Injector, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { finalize } from 'rxjs/operators';
 import { PriorityAreasServiceProxy, CreateOrEditPriorityAreaDto } from '@shared/service-proxies/service-proxies';
@@ -46,20 +46,20 @@ export class CreateOrEditPriorityAreaModalComponent extends AppComponentBase {
                 this.modal.show();
             });
         }
-        
+
     }
 
     save(): void {
-            this.saving = true;
+        this.saving = true;
 
-			
-            this._priorityAreasServiceProxy.createOrEdit(this.priorityArea)
-             .pipe(finalize(() => { this.saving = false;}))
-             .subscribe(() => {
+
+        this._priorityAreasServiceProxy.createOrEdit(this.priorityArea)
+            .pipe(finalize(() => { this.saving = false; }))
+            .subscribe(() => {
                 this.notify.info(this.l('SavedSuccessfully'));
                 this.close();
                 this.modalSave.emit(null);
-             });
+            });
     }
 
 
