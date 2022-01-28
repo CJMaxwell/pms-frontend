@@ -23,15 +23,17 @@
         <div class="kt-container kt-grid__item kt-grid__item--fluid">
             <div class="kt-portlet kt-portlet--mobile">
                 <div class="kt-portlet__body  ">
-                    <form *ngIf="active" #performanceIndicatorForm="ngForm" novalidate  autocomplete="off">
+                    <form *ngIf="active" #performanceIndicatorForm="ngForm" novalidate autocomplete="off">
                         <div class="form-group">
-                            <label for="performanceIndicator_MDA">{{l("MDA")}}</label>
-                            <input type="text" id="performanceIndicator_MDA" class="form-control"
-                                [(ngModel)]="mdaName" name="MDA" readonly disabled />
+                            <!-- <label for="performanceIndicator_MDA">{{l("MDA")}}</label> -->
+                            <label for="performanceIndicator_MDA">Sector</label>
+                            <input type="text" id="performanceIndicator_MDA" class="form-control" [(ngModel)]="mdaName"
+                                name="MDA" readonly disabled />
                         </div>
 
                         <div class="form-group">
-                            <label for="performanceIndicator_Deliverable">{{l("Deliverable")}}</label>
+                            <!-- <label for="performanceIndicator_Deliverable">{{l("Deliverable")}}</label> -->
+                            <label for="performanceIndicator_Deliverable">Initiative</label>
                             <input type="text" id="performanceIndicator_Deliverable" class="form-control"
                                 [(ngModel)]="deliverableName" name="Deliverable" readonly disabled />
                         </div>
@@ -41,23 +43,24 @@
                             <input type="text" id="performanceIndicator_Name" class="form-control"
                                 [(ngModel)]="performanceIndicator.name" name="Name" readonly disabled />
                         </div>
-    
+
                         <div class="form-group">
                             <label for="performanceIndicator_Description">{{l("Description")}}</label>
-                            <textarea id="performanceIndicator_Description" class="form-control" rows="5" readonly disabled
-                                [(ngModel)]="performanceIndicator.description" name="Description"></textarea>
+                            <textarea id="performanceIndicator_Description" class="form-control" rows="5" readonly
+                                disabled [(ngModel)]="performanceIndicator.description" name="Description"></textarea>
                         </div>
-    
+
                         <div class="form-group row">
                             <div class="col-lg-4 col-md-6">
-                                <label for="performanceIndicator_BaselineValue">{{l("BaselineValue")}}</label>    
+                                <label for="performanceIndicator_BaselineValue">{{l("BaselineValue")}}</label>
                                 <div *ngIf="performanceIndicator.dataType == dataTypeEnum.Number" class="input-group">
                                     <div *ngIf="performanceIndicator.unit == unitEnum.Money"
                                         class="input-group-prepend">
                                         <span class="input-group-text">NGN</span>
                                     </div>
-                                    <input type="number" id="performanceIndicator_BaselineValue" class="form-control" readonly disabled
-                                        [(ngModel)]="performanceIndicator.baselineValue" name="BaselineValue" />
+                                    <input type="number" id="performanceIndicator_BaselineValue" class="form-control"
+                                        readonly disabled [(ngModel)]="performanceIndicator.baselineValue"
+                                        name="BaselineValue" />
                                     <div *ngIf="performanceIndicator.unit == unitEnum.Percentage"
                                         class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-percent"></i></span>
@@ -66,7 +69,8 @@
 
                                 <input *ngIf="performanceIndicator.dataType == dataTypeEnum.DateTime" type="text"
                                     id="performanceIndicator_BaselineValue" class="form-control" disabled readonly
-                                    [value]="performanceIndicator.baselineValue | momentFormat:'DD-MMM-YYYY'" name="BaselineValue" />
+                                    [value]="performanceIndicator.baselineValue | momentFormat:'DD-MMM-YYYY'"
+                                    name="BaselineValue" />
                                 <input type="text" *ngIf="performanceIndicator.dataType == dataTypeEnum.Boolean"
                                     id="performanceIndicator_BaselineValue" class="form-control" disabled readonly
                                     [(ngModel)]="performanceIndicator.baselineValue" name="BaselineValue" />
@@ -99,7 +103,8 @@
                                     <tr class="d-flex" *ngFor="let item of yearlyTargets; let i = index;">
                                         <td class="col-md">{{item.target.year}}</td>
                                         <td class="col-md">
-                                            {{item.target.comparisonMethod == comparisonMethodEnum.LessThanOrEqual ? 'Less than or equal to' : 'Greater than or equal to'}}
+                                            {{item.target.comparisonMethod == comparisonMethodEnum.LessThanOrEqual ?
+                                            'Less than or equal to' : 'Greater than or equal to'}}
                                         </td>
                                         <td class="col-md">
                                             <span *ngIf="performanceIndicator.dataType == dataTypeEnum.Number">
@@ -115,15 +120,18 @@
                                             </span>
                                         </td>
                                         <td class="col-md">
-                                            <span *ngIf="performanceIndicator.dataType == dataTypeEnum.Number && item.target.actual">
+                                            <span
+                                                *ngIf="performanceIndicator.dataType == dataTypeEnum.Number && item.target.actual">
                                                 {{performanceIndicator.unit == unitEnum.Money ? 'NGN ' : ''}}
                                                 {{item.target.actual | number: '1.0-2'}}
                                                 {{performanceIndicator.unit == unitEnum.Percentage ? '%' : ''}}
                                             </span>
-                                            <span *ngIf="performanceIndicator.dataType == dataTypeEnum.DateTime && item.target.actual">
+                                            <span
+                                                *ngIf="performanceIndicator.dataType == dataTypeEnum.DateTime && item.target.actual">
                                                 {{item.target.actual | momentFormat:'DD-MMM-YYYY'}}
                                             </span>
-                                            <span *ngIf="performanceIndicator.dataType == dataTypeEnum.Boolean && item.target.actual">
+                                            <span
+                                                *ngIf="performanceIndicator.dataType == dataTypeEnum.Boolean && item.target.actual">
                                                 {{item.target.actual }}
                                             </span>
                                         </td>
@@ -136,13 +144,14 @@
                                         <td class="col-md">
                                             <div class="btn-group" role="group" aria-label="First group">
                                                 <button *ngIf="isGranted('Pages.PerformanceIndicator.Update')"
-                                                    data-toggle="tooltip" title="Update target's progress" data-placement="top"
-                                                    class="btn btn-sm btn-outline-primary" type="button" (click)="updateTarget(item)">
+                                                    data-toggle="tooltip" title="Update target's progress"
+                                                    data-placement="top" class="btn btn-sm btn-outline-primary"
+                                                    type="button" (click)="updateTarget(item)">
                                                     <i class="fa fa-edit"></i>
                                                 </button>
-                                                <button class="btn btn-sm btn-outline-primary" 
-                                                    data-toggle="tooltip" title="View audit log" data-placement="top"
-                                                    type="button" (click)="showHistory(item.target)">
+                                                <button class="btn btn-sm btn-outline-primary" data-toggle="tooltip"
+                                                    title="View audit log" data-placement="top" type="button"
+                                                    (click)="showHistory(item.target)">
                                                     <i class="fa fa-list-ul"></i>
                                                 </button>
                                             </div>
@@ -170,26 +179,31 @@
                                 <div class="card-body pt-3">
                                     <div class="form-group row pt-3">
                                         <div class="col-md-6">
-                                            <label for="auditInfo_dateCreated">Date Created</label>    
-                                            <input type="text" id="auditInfo_dateCreated" class="form-control" readonly disabled
-                                                    [value]="auditInfo.createdDate | momentFormat:'DD-MMM-YYYY hh:mm:ss'" name="auditInfo_dateCreated" />
+                                            <label for="auditInfo_dateCreated">Date Created</label>
+                                            <input type="text" id="auditInfo_dateCreated" class="form-control" readonly
+                                                disabled
+                                                [value]="auditInfo.createdDate | momentFormat:'DD-MMM-YYYY hh:mm:ss'"
+                                                name="auditInfo_dateCreated" />
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="auditInfo_createdBy">Created By</label>    
-                                            <input type="text" id="auditInfo_createdBy" class="form-control" readonly disabled
-                                                    [(ngModel)]="auditInfo.createdBy" name="auditInfo_createdBy" />
+                                            <label for="auditInfo_createdBy">Created By</label>
+                                            <input type="text" id="auditInfo_createdBy" class="form-control" readonly
+                                                disabled [(ngModel)]="auditInfo.createdBy" name="auditInfo_createdBy" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label for="auditInfo_updateDate">Date Last Updated</label>    
-                                            <input type="text" id="auditInfo_updateDate" class="form-control" readonly disabled
-                                                    [value]="auditInfo.lastUpdatedDate | momentFormat:'DD-MMM-YYYY hh:mm:ss'" name="auditInfo_updateDate" />
+                                            <label for="auditInfo_updateDate">Date Last Updated</label>
+                                            <input type="text" id="auditInfo_updateDate" class="form-control" readonly
+                                                disabled
+                                                [value]="auditInfo.lastUpdatedDate | momentFormat:'DD-MMM-YYYY hh:mm:ss'"
+                                                name="auditInfo_updateDate" />
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="auditInfo_updateBy">Lasted Updated By</label>    
-                                            <input type="text" id="auditInfo_updateBy" class="form-control" readonly disabled
-                                                    [(ngModel)]="auditInfo.lastUpdatedBy" name="auditInfo_updateBy" />
+                                            <label for="auditInfo_updateBy">Lasted Updated By</label>
+                                            <input type="text" id="auditInfo_updateBy" class="form-control" readonly
+                                                disabled [(ngModel)]="auditInfo.lastUpdatedBy"
+                                                name="auditInfo_updateBy" />
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +214,7 @@
             </div>
         </div>
 
-        
+
         <app-target-update-modal #updateTargetModal (modalSave)="reload()"></app-target-update-modal>
         <entityTypeHistoryModal #entityTypeHistoryModal></entityTypeHistoryModal>
         <app-view-target-progress-log-modal #progressUpdateLogModal></app-view-target-progress-log-modal>

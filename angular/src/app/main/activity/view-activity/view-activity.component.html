@@ -28,21 +28,23 @@
             <div class="kt-portlet kt-portlet--mobile">
                 <div class="kt-portlet__body">
                     <div class="form-group">
-                        <label for="performanceIndicator_MDA">{{l("MDA")}}</label>
-                        <input type="text" id="performanceIndicator_MDA" class="form-control"
-                            [(ngModel)]="mdaName" name="MDA" readonly disabled />
+                        <!-- <label for="performanceIndicator_MDA">{{l("MDA")}}</label> -->
+                        <label for="performanceIndicator_MDA">Sector</label>
+                        <input type="text" id="performanceIndicator_MDA" class="form-control" [(ngModel)]="mdaName"
+                            name="MDA" readonly disabled />
                     </div>
 
                     <div class="form-group">
-                        <label for="performanceIndicator_Deliverable">{{l("Deliverable")}}</label>
+                        <!-- <label for="performanceIndicator_Deliverable">{{l("Deliverable")}}</label> -->
+                        <label for="performanceIndicator_Deliverable">Initiative</label>
                         <input type="text" id="performanceIndicator_Deliverable" class="form-control"
                             [(ngModel)]="deliverableName" name="Deliverable" readonly disabled />
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="performanceActivity_Name">{{l("Activity")}}</label>
                         <input type="text" id="performanceActivity_Name" class="form-control" readonly disabled
-                            [(ngModel)]="performanceActivity.name" name="Name"  />
+                            [(ngModel)]="performanceActivity.name" name="Name" />
                     </div>
 
                     <div class="form-group">
@@ -53,77 +55,89 @@
 
                     <div class="form-group">
                         <label for="performanceActivity_MilestoneAchieved">{{l("MilestonesAchieved")}}</label>
-                        <textarea id="performanceActivity_MilestoneAchieved" class="form-control" rows="5" readonly disabled
-                            [(ngModel)]="performanceActivity.milestoneAchieved" name="MilestoneAchieved"></textarea>
+                        <textarea id="performanceActivity_MilestoneAchieved" class="form-control" rows="5" readonly
+                            disabled [(ngModel)]="performanceActivity.milestoneAchieved"
+                            name="MilestoneAchieved"></textarea>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-md-6">
                             <label for="performanceActivity_PlannedStartDate">{{l("PlannedStartDate")}}</label>
                             <input required class="form-control m-input" type="datetime" readonly disabled
-                                [value]="performanceActivity.plannedStartDate | momentFormat:'LL'" id="performanceActivity_PlannedStartDate"
-                                name="performanceActivity_PlannedStartDate">
+                                [value]="performanceActivity.plannedStartDate | momentFormat:'LL'"
+                                id="performanceActivity_PlannedStartDate" name="performanceActivity_PlannedStartDate">
                         </div>
                         <div class="col-md-6">
-                            <label for="performanceActivity_PlannedCompletionDate">{{l("PlannedCompletionDate")}}</label>
+                            <label
+                                for="performanceActivity_PlannedCompletionDate">{{l("PlannedCompletionDate")}}</label>
                             <input required class="form-control m-input" type="text" readonly disabled
-                                [value]="performanceActivity.plannedCompletionDate | momentFormat:'LL'" id="performanceActivity_PlannedCompletionDate"
+                                [value]="performanceActivity.plannedCompletionDate | momentFormat:'LL'"
+                                id="performanceActivity_PlannedCompletionDate"
                                 name="performanceActivity_PlannedCompletionDate">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <label for="deliverableBudget">{{"Budget" | localize}}</label>
+                            <!-- <label for="deliverableBudget">{{"Budget" | localize}}</label> -->
+                            <label for="deliverableBudget">Potential Revenue</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">NGN</span>								
+                                    <span class="input-group-text">NGN</span>
                                 </div>
-                                <input id="deliverableBudget"  class="form-control" name="deliverableBudget" [(ngModel)]="performanceActivity.budgetAmount" readonly disabled />
+                                <input id="deliverableBudget" class="form-control" name="deliverableBudget"
+                                    [(ngModel)]="performanceActivity.budgetAmount" readonly disabled />
                             </div>
                         </div>
-                        
-                        <div class="col-md-6">
-                            <label for="deliverableBudget">{{"Amount Spent" | localize}}</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">NGN</span>								
-                                </div>
-                                <input id="deliverableBudget"  class="form-control" name="deliverableBudget" [(ngModel)]="performanceActivity.amountSpent" readonly disabled />
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group row">     
-                        <div class="col-md-12">
-                            <label class="" for="Blanc">Completion Level</label>
-                            <div class="progress progress-lg">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-{{performanceActivity.completionLevel === 100 ? 'success' : 'warning'}}" 
-                                    role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" [style.width]="performanceActivity.completionLevel + '%'">
-                                    {{performanceActivity.completionLevel}}%
+                        <div class="col-md-6">
+                            <!-- <label for="deliverableBudget">{{"Amount Spent" | localize}}</label> -->
+                            <label for="deliverableBudget">Actual Revenue</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">NGN</span>
                                 </div>
+                                <input id="deliverableBudget" class="form-control" name="deliverableBudget"
+                                    [(ngModel)]="performanceActivity.amountSpent" readonly disabled />
                             </div>
-                        </div>                  
+                        </div>
                     </div>
 
                     <div class="form-group row">
-                        <div *ngIf="performanceActivity.completionStatus !== completionStatusEnum.NotStarted" class="col-md-6">
+                        <div class="col-md-12">
+                            <label class="" for="Blanc">Completion Level</label>
+                            <div class="progress progress-lg">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-{{performanceActivity.completionLevel === 100 ? 'success' : 'warning'}}"
+                                    role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
+                                    [style.width]="performanceActivity.completionLevel + '%'">
+                                    {{performanceActivity.completionLevel}}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div *ngIf="performanceActivity.completionStatus !== completionStatusEnum.NotStarted"
+                            class="col-md-6">
                             <label for="performanceActivity_actualStartDate">{{l("ActualStartDate")}}</label>
                             <input required class="form-control m-input" type="datetime" readonly disabled
-                                [value]="performanceActivity.actualStartDate | momentFormat:'LL'" id="performanceActivity_actualStartDate"
-                                name="performanceActivity_actualStartDate">
+                                [value]="performanceActivity.actualStartDate | momentFormat:'LL'"
+                                id="performanceActivity_actualStartDate" name="performanceActivity_actualStartDate">
                         </div>
-                        <div *ngIf="performanceActivity.completionStatus === completionStatusEnum.Completed" class="col-md-6">
+                        <div *ngIf="performanceActivity.completionStatus === completionStatusEnum.Completed"
+                            class="col-md-6">
                             <label for="performanceActivity_actualCompletionDate">{{l("ActualCompletionDate")}}</label>
                             <input required class="form-control m-input" type="datetime" readonly disabled
-                                [value]="performanceActivity.actualCompletionDate | momentFormat:'LL'" id="performanceActivity_actualCompletionDate"
+                                [value]="performanceActivity.actualCompletionDate | momentFormat:'LL'"
+                                id="performanceActivity_actualCompletionDate"
                                 name="performanceActivity_actualCompletionDate">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="performanceActivity_Comment">Additional Information</label>
-                        <p-editor [(ngModel)]="performanceActivity.note" name="Comment" [style]="{'height':'150px'}" [readonly]="true" [disabled]="true"></p-editor>
+                        <p-editor [(ngModel)]="performanceActivity.note" name="Comment" [style]="{'height':'150px'}"
+                            [readonly]="true" [disabled]="true"></p-editor>
                     </div>
 
                     <!--begin::Accordion-->
@@ -141,10 +155,11 @@
                                     <div class="form-group">
                                         <ul *ngIf="attachments.length > 0">
                                             <li *ngFor="let file of attachments">
-                                                <a href="{{downloadResourceFile(file)}}" class="text-info" target="_blank"
-                                                    title="{{l('DownloadFile')}}">
+                                                <a href="{{downloadResourceFile(file)}}" class="text-info"
+                                                    target="_blank" title="{{l('DownloadFile')}}">
                                                     <span>
-                                                        <i class="fa fa-download"></i>&nbsp;<span>{{file.fileName}}</span>
+                                                        <i
+                                                            class="fa fa-download"></i>&nbsp;<span>{{file.fileName}}</span>
                                                     </span>
                                                 </a>
                                             </li>
@@ -167,26 +182,31 @@
                                 <div class="card-body pt-3">
                                     <div class="form-group row pt-3">
                                         <div class="col-md-6">
-                                            <label for="auditInfo_dateCreated">Date Created</label>    
-                                            <input type="text" id="auditInfo_dateCreated" class="form-control" readonly disabled
-                                                    [value]="auditInfo.createdDate | momentFormat:'DD-MMM-YYYY hh:mm:ss'" name="auditInfo_dateCreated" />
+                                            <label for="auditInfo_dateCreated">Date Created</label>
+                                            <input type="text" id="auditInfo_dateCreated" class="form-control" readonly
+                                                disabled
+                                                [value]="auditInfo.createdDate | momentFormat:'DD-MMM-YYYY hh:mm:ss'"
+                                                name="auditInfo_dateCreated" />
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="auditInfo_createdBy">Created By</label>    
-                                            <input type="text" id="auditInfo_createdBy" class="form-control" readonly disabled
-                                                    [(ngModel)]="auditInfo.createdBy" name="auditInfo_createdBy" />
+                                            <label for="auditInfo_createdBy">Created By</label>
+                                            <input type="text" id="auditInfo_createdBy" class="form-control" readonly
+                                                disabled [(ngModel)]="auditInfo.createdBy" name="auditInfo_createdBy" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label for="auditInfo_updateDate">Date Last Updated</label>    
-                                            <input type="text" id="auditInfo_updateDate" class="form-control" readonly disabled
-                                                    [value]="auditInfo.lastUpdatedDate | momentFormat:'DD-MMM-YYYY hh:mm:ss'" name="auditInfo_updateDate" />
+                                            <label for="auditInfo_updateDate">Date Last Updated</label>
+                                            <input type="text" id="auditInfo_updateDate" class="form-control" readonly
+                                                disabled
+                                                [value]="auditInfo.lastUpdatedDate | momentFormat:'DD-MMM-YYYY hh:mm:ss'"
+                                                name="auditInfo_updateDate" />
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="auditInfo_updateBy">Lasted Updated By</label>    
-                                            <input type="text" id="auditInfo_updateBy" class="form-control" readonly disabled
-                                                    [(ngModel)]="auditInfo.lastUpdatedBy" name="auditInfo_updateBy" />
+                                            <label for="auditInfo_updateBy">Lasted Updated By</label>
+                                            <input type="text" id="auditInfo_updateBy" class="form-control" readonly
+                                                disabled [(ngModel)]="auditInfo.lastUpdatedBy"
+                                                name="auditInfo_updateBy" />
                                         </div>
                                     </div>
                                 </div>
@@ -197,7 +217,8 @@
             </div>
         </div>
 
-        
-    <app-update-activity-progress-modal #updateActivityModal (modalSave)="reloadPage()"></app-update-activity-progress-modal>
+
+        <app-update-activity-progress-modal #updateActivityModal (modalSave)="reloadPage()">
+        </app-update-activity-progress-modal>
     </div>
 </div>
