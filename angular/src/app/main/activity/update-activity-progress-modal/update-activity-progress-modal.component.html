@@ -26,22 +26,24 @@
 
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <label for="deliverableBudget">{{"Budget" | localize}}</label>
+                            <label for="deliverableBudget">Potential Revenue</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">NGN</span>								
+                                    <span class="input-group-text">NGN</span>
                                 </div>
-                                <input id="deliverableBudget"  class="form-control" name="deliverableBudget" [(ngModel)]="performanceActivity.budgetAmount" readonly disabled/>
+                                <input id="deliverableBudget" class="form-control" name="deliverableBudget"
+                                    [(ngModel)]="performanceActivity.budgetAmount" readonly disabled />
                             </div>
                         </div>
-                        
+
                         <div class="col-md-6">
-                            <label for="deliverableBudget">{{"Amount Spent" | localize}}</label>
+                            <label for="deliverableBudget">Actual Revenue</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">NGN</span>								
+                                    <span class="input-group-text">NGN</span>
                                 </div>
-                                <input id="deliverableBudget"  class="form-control" name="deliverableBudget" [(ngModel)]="performanceActivity.amountSpent" />
+                                <input id="deliverableBudget" class="form-control" name="deliverableBudget"
+                                    [(ngModel)]="performanceActivity.amountSpent" />
                             </div>
                         </div>
                     </div>
@@ -63,52 +65,78 @@
 
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <label for="performanceActivity_completionLevel">{{l("EnterProgressLevel")}} <span class="kt-font-danger">*</span></label>
+                            <!-- <label for="performanceActivity_completionLevel">{{l("EnterProgressLevel")}} <span
+                                    class="kt-font-danger">*</span></label>
                             <div class="input-group">
-                                <input type="number" id="performanceActivity_completionLevel" class="form-control" required min="0" max="100"
-                                    [(ngModel)]="performanceActivity.completionLevel" name="completionLevel" />
+                                <input type="number" id="performanceActivity_completionLevel" class="form-control"
+                                    required min="0" max="100" [(ngModel)]="performanceActivity.completionLevel"
+                                    name="completionLevel" />
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-percent"></i></span>
                                 </div>
                             </div>
-                            <span class="form-text text-muted">{{l('EnterCurrentValueNote')}}</span>
+                            <span class="form-text text-muted">{{l('EnterCurrentValueNote')}}</span> -->
+                            <div class="form-group">
+                                <label for="currentStatus">Current Status</label>
+                                <select id="prevStatus" name="prevStatus" class="form-control"
+                                    [(ngModel)]="preCompletionLevel">
+                                    <option value="0">Not Started</option>
+                                    <option value="1">In Progress</option>
+                                    <option value="2">Completed</option>
+                                    <option value="3">Delayed</option>
+                                </select>
+
+                            </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label for="performanceActivity_prevLevel">{{l("Last progress level")}}</label>
+                            <!-- <label for="performanceActivity_prevLevel">{{l("Last progress level")}}</label>
                             <div class="input-group">
-                                <input type="number" id="performanceActivity_prevLevel" class="form-control" required min="0" max="100" readonly disabled
-                                    [(ngModel)]="preCompletionLevel" name="prevLevel" />
+                                <input type="number" id="performanceActivity_prevLevel" class="form-control" required
+                                    min="0" max="100" readonly disabled [(ngModel)]="preCompletionLevel"
+                                    name="prevLevel" />
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-percent"></i></span>
                                 </div>
                             </div>
-                            <span class="form-text text-muted">Progress level as at the last update</span>
+                            <span class="form-text text-muted">Progress level as at the last update</span> -->
+                            <!-- <div class="form-group">
+                                <label for="prevStatus">Previous Status</label>
+                                <select id="prevStatus" name="prevStatus" class="form-control"
+                                    [(ngModel)]="preCompletionLevel">
+                                    <option value="0">Not Started</option>
+                                    <option value="1">In Progress</option>
+                                    <option value="2">Completed</option>
+                                    <option value="3">Delayed</option>
+                                </select>
+                            </div> -->
                         </div>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-8">
-                            <label for="performanceActivity_dataSource">{{l("EnterDataSource")}} <span class="kt-font-danger">*</span></label>
+                        <!-- <div class="col-md-8">
+                            <label for="performanceActivity_dataSource">{{l("EnterDataSource")}} <span
+                                    class="kt-font-danger">*</span></label>
                             <textarea id="performanceActivity_dataSource" class="form-control" rows="3"
                                 [(ngModel)]="performanceActivity.dataSource" name="dataSource" required></textarea>
+                        </div> -->
+
+                        <div class="col-md-4">
+                            <label for="escalate">Escalate to Partner <span class="kt-font-danger mr-2">*</span></label>
+                            <input type="checkbox" id="escalate" required [(ngModel)]="escalate" name="escalate" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="performanceActivity_Comment">Additional Information</label>
-                        <p-editor [(ngModel)]="performanceActivity.note" name="Comment" [style]="{'height':'150px'}"></p-editor>
+                        <p-editor [(ngModel)]="performanceActivity.note" name="Comment" [style]="{'height':'150px'}">
+                        </p-editor>
                     </div>
 
                     <div class="form-group">
                         <label for="SignedTORFileUploadFileInput" class="control-label">Attachments</label>
-                        <p-fileUpload multiple="multiple"
-                                    id="DefaultFileUploadFileInput"
-                                    name="DefaultFileUploadFileInput[]"
-                                    [url]="uploadUrl"
-                                    accept="image/*,.pdf,.xlsx,.docx"
-                                    maxFileSize="1000000"
-                                    (onUpload)="onUpload($event)"
-                                    (onBeforeSend)="onBeforeSend($event)">
+                        <p-fileUpload multiple="multiple" id="DefaultFileUploadFileInput"
+                            name="DefaultFileUploadFileInput[]" [url]="uploadUrl" accept="image/*,.pdf,.xlsx,.docx"
+                            maxFileSize="1000000" (onUpload)="onUpload($event)" (onBeforeSend)="onBeforeSend($event)">
 
                             <ng-template pTemplate="content">
                                 <ul *ngIf="uploadedFiles.length">

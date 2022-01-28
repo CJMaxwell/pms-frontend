@@ -15,17 +15,27 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="PerformanceReview_Comment">{{l("Achievements")}}</label>
-                        <p-editor [(ngModel)]="review.reviewComment" name="Comment" [style]="{'height':'150px'}" required></p-editor>
+                        <p-editor [(ngModel)]="review.reviewComment" name="Comment" [style]="{'height':'150px'}"
+                            required></p-editor>
                     </div>
 
                     <div class="form-group">
-                        <label for="PerformanceReview_Challenges">{{l("Challenges")}}</label>
-                        <p-editor [(ngModel)]="review.challenges" name="Challenges" [style]="{'height':'150px'}"></p-editor>
+                        <!-- <label for="PerformanceReview_Challenges">{{l("Challenges")}}</label> -->
+                        <label for="PerformanceReview_Challenges">Risks</label>
+                        <p-editor [(ngModel)]="review.challenges" name="Challenges" [style]="{'height':'150px'}">
+                        </p-editor>
                     </div>
 
                     <div class="form-group">
-                        <label for="PerformanceReview_Recommendation">{{l("Recommendation")}}</label>
-                        <p-editor [(ngModel)]="review.recommendation" name="Recommendation" [style]="{'height':'150px'}"></p-editor>
+                        <!-- <label for="PerformanceReview_Recommendation">{{l("Recommendation")}}</label> -->
+                        <label for="PerformanceReview_Recommendation">Mitigation actions</label>
+                        <p-editor [(ngModel)]="review.recommendation" name="Recommendation"
+                            [style]="{'height':'150px'}"></p-editor>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="riskOwner">Risk Owner</label>
+                        <input id="riskOwner" class="form-control" name="riskOwner" [(ngModel)]="review.riskOwner" />
                     </div>
 
                 </div>

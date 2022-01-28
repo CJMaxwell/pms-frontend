@@ -18104,7 +18104,8 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
     budgetAmount!: number | undefined;
     amountSpent!: number | undefined;
     id!: number | undefined;
-
+    primaryInitiativeOwner?: string | undefined;
+    secondaryInitiativeOwner?: string | undefined;
     constructor(data?: ICreateOrEditDeliverableDto) {
         if (data) {
             for (var property in data) {
@@ -18123,6 +18124,8 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
             this.budgetAmount = data["budgetAmount"];
             this.amountSpent = data["amountSpent"];
             this.id = data["id"];
+            this.primaryInitiativeOwner = data["primaryInitiativeOwner"];
+            this.secondaryInitiativeOwner = data["secondaryInitiativeOwner"];
         }
     }
 
@@ -18142,6 +18145,8 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
         data["budgetAmount"] = this.budgetAmount;
         data["amountSpent"] = this.amountSpent;
         data["id"] = this.id;
+        data["primaryInitiativeOwner"] = this.primaryInitiativeOwner;
+        data["secondaryInitiativeOwner"] = this.secondaryInitiativeOwner;
         return data;
     }
 }
@@ -18154,6 +18159,8 @@ export interface ICreateOrEditDeliverableDto {
     budgetAmount: number | undefined;
     amountSpent: number | undefined;
     id: number | undefined;
+    primaryInitiativeOwner?: string | undefined;
+    secondaryInitiativeOwner?: string | undefined;
 }
 
 export class GetDeliverableForEditOutput implements IGetDeliverableForEditOutput {
@@ -18720,9 +18727,10 @@ export class CreateOrEditPerformanceActivityDto implements ICreateOrEditPerforma
     completionLevel!: number | undefined;
     budgetAmount!: number | undefined;
     amountSpent!: number | undefined;
-    primaryInitiativeOwner?: string | undefined;
-    secondaryInitiativeOwner?: string | undefined;
     id!: number | undefined;
+    escalate?: boolean;
+    status?: string | undefined;
+
 
     constructor(data?: ICreateOrEditPerformanceActivityDto) {
         if (data) {
@@ -18751,6 +18759,8 @@ export class CreateOrEditPerformanceActivityDto implements ICreateOrEditPerforma
             this.budgetAmount = data["budgetAmount"];
             this.amountSpent = data["amountSpent"];
             this.id = data["id"];
+            this.escalate = data["escalate"];
+            this.status = data["status"];
         }
     }
 
@@ -18779,6 +18789,8 @@ export class CreateOrEditPerformanceActivityDto implements ICreateOrEditPerforma
         data["budgetAmount"] = this.budgetAmount;
         data["amountSpent"] = this.amountSpent;
         data["id"] = this.id;
+        data["escalate"] = this.escalate
+        data["status"] = this.status;
         return data;
     }
 }
@@ -18964,6 +18976,8 @@ export class CreateOrEditPerformanceReviewDto implements ICreateOrEditPerformanc
     challenges!: string | undefined;
     recommendation!: string | undefined;
     id!: number | undefined;
+    riskOwner?: string | undefined;
+
 
     constructor(data?: ICreateOrEditPerformanceReviewDto) {
         if (data) {
@@ -18981,6 +18995,7 @@ export class CreateOrEditPerformanceReviewDto implements ICreateOrEditPerformanc
             this.challenges = data["challenges"];
             this.recommendation = data["recommendation"];
             this.id = data["id"];
+            this.riskOwner = data["riskOwner"];
         }
     }
 
@@ -18998,6 +19013,7 @@ export class CreateOrEditPerformanceReviewDto implements ICreateOrEditPerformanc
         data["challenges"] = this.challenges;
         data["recommendation"] = this.recommendation;
         data["id"] = this.id;
+        data["riskOwner"] = this.riskOwner;
         return data;
     }
 }
@@ -19008,6 +19024,8 @@ export interface ICreateOrEditPerformanceReviewDto {
     challenges: string | undefined;
     recommendation: string | undefined;
     id: number | undefined;
+    riskOwner?: string | undefined;
+
 }
 
 export class GetPerformanceReviewForEditOutput implements IGetPerformanceReviewForEditOutput {

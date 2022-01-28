@@ -10,7 +10,8 @@
                     <h5 class="modal-title">
                         <!-- <span *ngIf="deliverable.id">{{"EditDeliverable" | localize}}</span> -->
                         <span *ngIf="deliverable.id">Edit Initiative</span>
-                        <span *ngIf="!deliverable.id">{{"CreateNewDeliverable" | localize}}</span>
+                        <!-- <span *ngIf="!deliverable.id">{{"CreateNewDeliverable" | localize}}</span> -->
+                        <span *ngIf="!deliverable.id">New Initiative</span>
                         <!-- <span>{{"Mda" | localize}}: {{mdaName}}</span> -->
                     </h5>
                     <button type="button" class="close" (click)="close()" [attr.aria-label]="l('Close')"
@@ -30,7 +31,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="SingleSelectInput" class="col-lg-12">{{"PriorityArea" | localize}}</label>
+                        <label for="SingleSelectInput" class="col-lg-12">Opportunity Area</label>
                         <div class="col-lg-10 col-md-9 col-sm-8">
                             <p-autoComplete [(ngModel)]="priorityArea" id="SingleSelectInput"
                                 [suggestions]="filteredPriorityAreas" (completeMethod)="filterPriorityArea($event)"
@@ -53,7 +54,21 @@
 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="deliverableBudget">{{"Budget" | localize}}</label>
+                            <label for="secondaryInitiativeOwner">Primary Initiative Owner</label>
+                            <input id="secondaryInitiativeOwner" class="form-control" name="secondaryInitiativeOwner"
+                                [(ngModel)]="deliverable.primaryInitiativeOwner" />
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="secondaryInitiativeOwner">Secondary Initiative Owner</label>
+                            <input id="secondaryInitiativeOwner" class="form-control" name="secondaryInitiativeOwner"
+                                [(ngModel)]="deliverable.secondaryInitiativeOwner" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="deliverableBudget">Potential Revenue</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">NGN</span>
@@ -64,7 +79,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="deliverableBudget">{{"Amount Spent" | localize}}</label>
+                            <label for="deliverableBudget">Actual Revenue</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">NGN</span>
@@ -74,7 +89,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="modal-footer">
