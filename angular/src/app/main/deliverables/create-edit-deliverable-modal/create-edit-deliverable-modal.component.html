@@ -35,7 +35,7 @@
                         <div class="col-lg-10 col-md-9 col-sm-8">
                             <p-autoComplete [(ngModel)]="priorityArea" id="SingleSelectInput"
                                 [suggestions]="filteredPriorityAreas" (completeMethod)="filterPriorityArea($event)"
-                                field="name" placeholder="Priority Area" [minLength]="1" name="PriorityArea"
+                                field="name" placeholder="Opportunity Area" [minLength]="1" name="PriorityArea"
                                 inputStyleClass="form-control" (onSelect)="selectPriorityArea($event)"
                                 styleClass="width-percent-100">
                             </p-autoComplete>
@@ -68,24 +68,24 @@
 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="deliverableBudget">Potential Revenue</label>
+                            <label for="potentialRevenue">Potential Revenue</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">NGN</span>
                                 </div>
-                                <input id="deliverableBudget" class="form-control" name="deliverableBudget"
-                                    [(ngModel)]="deliverable.budgetAmount" />
+                                <input id="potentialRevenue" class="form-control" name="potentialRevenue"
+                                    [(ngModel)]="deliverable.potentialRevenue" />
                             </div>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="deliverableBudget">Actual Revenue</label>
+                            <label for="actualRevenue">Actual Revenue</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">NGN</span>
                                 </div>
-                                <input id="deliverableBudget" class="form-control" name="deliverableBudget"
-                                    [(ngModel)]="deliverable.amountSpent" />
+                                <input id="actualRevenue" class="form-control" name="actualRevenue"
+                                    [(ngModel)]="deliverable.actualRevenue" />
                             </div>
                         </div>
                     </div>

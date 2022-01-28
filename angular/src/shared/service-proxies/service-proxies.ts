@@ -18106,6 +18106,8 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
     id!: number | undefined;
     primaryInitiativeOwner?: string | undefined;
     secondaryInitiativeOwner?: string | undefined;
+    potentialRevenue?: number | undefined;
+    actualRevenue?: number | undefined;
     constructor(data?: ICreateOrEditDeliverableDto) {
         if (data) {
             for (var property in data) {
@@ -18126,6 +18128,8 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
             this.id = data["id"];
             this.primaryInitiativeOwner = data["primaryInitiativeOwner"];
             this.secondaryInitiativeOwner = data["secondaryInitiativeOwner"];
+            this.potentialRevenue = data["potentialRevenue"];
+            this.actualRevenue = data["actualRevenue"];
         }
     }
 
@@ -18147,6 +18151,8 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
         data["id"] = this.id;
         data["primaryInitiativeOwner"] = this.primaryInitiativeOwner;
         data["secondaryInitiativeOwner"] = this.secondaryInitiativeOwner;
+        data["potentialRevenue"] = this.potentialRevenue;
+        data["actualRevenue"] = this.actualRevenue;
         return data;
     }
 }
@@ -18161,6 +18167,8 @@ export interface ICreateOrEditDeliverableDto {
     id: number | undefined;
     primaryInitiativeOwner?: string | undefined;
     secondaryInitiativeOwner?: string | undefined;
+    potentialRevenue?: number | undefined;
+    actualRevenue?: number | undefined;
 }
 
 export class GetDeliverableForEditOutput implements IGetDeliverableForEditOutput {
@@ -25171,6 +25179,7 @@ export class CreateOrEditPriorityAreaDto implements ICreateOrEditPriorityAreaDto
             this.name = data["name"];
             this.description = data["description"];
             this.id = data["id"];
+            this.partnerResponsible = data["partnerResponsible"];
         }
     }
 
@@ -25186,6 +25195,7 @@ export class CreateOrEditPriorityAreaDto implements ICreateOrEditPriorityAreaDto
         data["name"] = this.name;
         data["description"] = this.description;
         data["id"] = this.id;
+        data["partnerResponsible"] = this.partnerResponsible;
         return data;
     }
 }
