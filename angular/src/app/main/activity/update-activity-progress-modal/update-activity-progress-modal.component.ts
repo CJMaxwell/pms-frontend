@@ -34,8 +34,7 @@ export class UpdateActivityProgressModalComponent extends AppComponentBase {
     attachments: ActivityAttachmentDto[] = new Array();
     activityAttachment: ActivityAttachmentDto = new ActivityAttachmentDto();
     preCompletionLevel = 0;
-    escalate;
-    status = '';
+    //escalatedToPartner: boolean;
 
     dataTypeEnum = DataTypeEnum;
     unitEnum = UnitsEnum;
@@ -64,8 +63,7 @@ export class UpdateActivityProgressModalComponent extends AppComponentBase {
                 this.performanceActivity = result.performanceActivity;
                 this.attachments = result.attachments;
                 this.preCompletionLevel = result.performanceActivity.completionLevel;
-                this.escalate = result.performanceActivity.escalate;
-                this.status = result.performanceActivity.status;
+                //this.escalatedToPartner = result.performanceActivity.escalatedToPartner;
 
                 if (result.performanceActivity.actualStartDate) {
                     this.actualStartDate = result.performanceActivity.actualStartDate.toDate();

@@ -77,9 +77,9 @@
                             </div>
                             <span class="form-text text-muted">{{l('EnterCurrentValueNote')}}</span> -->
                             <div class="form-group">
-                                <label for="currentStatus">Current Status</label>
-                                <select id="prevStatus" name="prevStatus" class="form-control"
-                                    [(ngModel)]="preCompletionLevel">
+                                <label for="completionStatus">Current Status</label>
+                                <select id="completionStatus" name="completionStatus" class="form-control"
+                                    [(ngModel)]="performanceActivity.completionStatus">
                                     <option value="0">Not Started</option>
                                     <option value="1">In Progress</option>
                                     <option value="2">Completed</option>
@@ -121,8 +121,13 @@
                         </div> -->
 
                         <div class="col-md-4">
-                            <label for="escalate">Escalate to Partner <span class="kt-font-danger mr-2">*</span></label>
-                            <input type="checkbox" id="escalate" required [(ngModel)]="escalate" name="escalate" />
+                            <label for="escalatedToPartner" class="mr-2">
+                                Escalate to Partner
+                                <!-- <span class="kt-font-danger mr-2">*</span> -->
+                            </label>
+                            <input (change)="escalatedToPartner = !escalatedToPartner" type="checkbox"
+                                [checked]="escalatedToPartner" id="escalatedToPartner" required
+                                [(ngModel)]="performanceActivity.escalatedToPartner" name="escalatedToPartner" />
                         </div>
                     </div>
 

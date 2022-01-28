@@ -18728,7 +18728,7 @@ export class CreateOrEditPerformanceActivityDto implements ICreateOrEditPerforma
     actualStartDate!: moment.Moment | undefined;
     plannedCompletionDate!: moment.Moment | undefined;
     actualCompletionDate!: moment.Moment | undefined;
-    completionStatus!: CompletionStatusEnum;
+    completionStatus!: number | undefined; //CompletionStatusEnum;
     note!: string | undefined;
     canCascade!: boolean;
     dataSource!: string | undefined;
@@ -18736,8 +18736,7 @@ export class CreateOrEditPerformanceActivityDto implements ICreateOrEditPerforma
     budgetAmount!: number | undefined;
     amountSpent!: number | undefined;
     id!: number | undefined;
-    escalate?: boolean;
-    status?: string | undefined;
+    escalatedToPartner?: boolean;
 
 
     constructor(data?: ICreateOrEditPerformanceActivityDto) {
@@ -18767,8 +18766,7 @@ export class CreateOrEditPerformanceActivityDto implements ICreateOrEditPerforma
             this.budgetAmount = data["budgetAmount"];
             this.amountSpent = data["amountSpent"];
             this.id = data["id"];
-            this.escalate = data["escalate"];
-            this.status = data["status"];
+            this.escalatedToPartner = data["escalatedToPartner"];
         }
     }
 
@@ -18789,7 +18787,7 @@ export class CreateOrEditPerformanceActivityDto implements ICreateOrEditPerforma
         data["actualStartDate"] = this.actualStartDate ? this.actualStartDate.toISOString() : <any>undefined;
         data["plannedCompletionDate"] = this.plannedCompletionDate ? this.plannedCompletionDate.toISOString() : <any>undefined;
         data["actualCompletionDate"] = this.actualCompletionDate ? this.actualCompletionDate.toISOString() : <any>undefined;
-        data["completionStatus"] = this.completionStatus;
+        data["completionStatus"] = +this.completionStatus;
         data["note"] = this.note;
         data["canCascade"] = this.canCascade;
         data["dataSource"] = this.dataSource;
@@ -18797,8 +18795,7 @@ export class CreateOrEditPerformanceActivityDto implements ICreateOrEditPerforma
         data["budgetAmount"] = this.budgetAmount;
         data["amountSpent"] = this.amountSpent;
         data["id"] = this.id;
-        data["escalate"] = this.escalate
-        data["status"] = this.status;
+        data["escalatedToPartner"] = this.escalatedToPartner
         return data;
     }
 }
