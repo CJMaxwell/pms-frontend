@@ -18108,6 +18108,8 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
     secondaryInitiativeOwner?: string | undefined;
     potentialRevenue?: number | undefined;
     actualRevenue?: number | undefined;
+    potentialClients?: IPotentialClientDTO[] | undefined;
+
     constructor(data?: ICreateOrEditDeliverableDto) {
         if (data) {
             for (var property in data) {
@@ -18130,6 +18132,7 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
             this.secondaryInitiativeOwner = data["secondaryInitiativeOwner"];
             this.potentialRevenue = data["potentialRevenue"];
             this.actualRevenue = data["actualRevenue"];
+            this.potentialClients = data["potentialClients"];
         }
     }
 
@@ -18153,6 +18156,7 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
         data["secondaryInitiativeOwner"] = this.secondaryInitiativeOwner;
         data["potentialRevenue"] = this.potentialRevenue;
         data["actualRevenue"] = this.actualRevenue;
+        data["potentialClients"] = this.potentialClients;
         return data;
     }
 }
@@ -18169,6 +18173,14 @@ export interface ICreateOrEditDeliverableDto {
     secondaryInitiativeOwner?: string | undefined;
     potentialRevenue?: number | undefined;
     actualRevenue?: number | undefined;
+    potentialClients?: IPotentialClientDTO[] | undefined;
+}
+
+export interface IPotentialClientDTO {
+    id: number | undefined,
+    name: string | undefined,
+    description: string | undefined,
+    potentialRevenue: number | undefined;
 }
 
 export class GetDeliverableForEditOutput implements IGetDeliverableForEditOutput {

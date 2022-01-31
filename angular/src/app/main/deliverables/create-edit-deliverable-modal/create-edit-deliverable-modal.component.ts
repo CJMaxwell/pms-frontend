@@ -5,6 +5,7 @@ import { DeliverablesServiceProxy } from '@shared/service-proxies/service-proxie
 import { ModalDirective } from 'ngx-bootstrap';
 import { finalize } from 'rxjs/operators';
 import * as _ from 'lodash';
+import { PotentialClientComponent } from '../potential-client/potential-client.component';
 
 export interface IDeliverableOnEdit {
     id?: number;
@@ -20,6 +21,7 @@ export interface IDeliverableOnEdit {
 export class CreateEditDeliverableModalComponent extends AppComponentBase implements OnInit {
 
     @ViewChild('createOrEditModal', { static: true }) modal: ModalDirective;
+    @ViewChild('client', { static: false }) potentialClients: PotentialClientComponent;
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
     active = false;
@@ -90,6 +92,7 @@ export class CreateEditDeliverableModalComponent extends AppComponentBase implem
     }
 
     save(): void {
+        this.deliverable.potentialClients = this.potentialClients.potentialClientForm.value.potentialClients;
         this.saving = true;
         this._deliverableServiceProxy
             .createOrEdit(this.deliverable)

@@ -72,6 +72,7 @@ import { ViewTargetProgressLogModalComponent } from '@app/main/indicators/view-t
 import { ViewActivityProgressLogModalComponent } from '@app/main/activity/view-activity-progress-log-modal/view-activity-progress-log-modal.component';
 import { ViewActivityComponent } from '@app/main/activity/view-activity/view-activity.component';
 import { PerformanceReviewComponent } from '@app/main/deliverables/reviews/performance-review/performance-review.component';
+import { PotentialClientComponent } from '@app/main/deliverables/potential-client/potential-client.component';
 
 @NgModule({
     imports: [
@@ -146,7 +147,9 @@ import { PerformanceReviewComponent } from '@app/main/deliverables/reviews/perfo
         AddWidgetModalComponent,
         SingleLineStringInputTypeComponent,
         ComboboxInputTypeComponent,
-        CheckboxInputTypeComponent
+        CheckboxInputTypeComponent,
+        PotentialClientComponent
+
     ],
     exports: [
         ViewActivityProgressLogModalComponent,

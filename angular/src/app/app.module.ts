@@ -96,7 +96,7 @@ import { AppBsModalModule } from '@shared/common/appBsModal/app-bs-modal.module'
         SessionTimeoutModalComponent,
         SessionTimeoutComponent,
         MenuSearchBarComponent,
-        ActiveDelegatedUsersComboComponent
+        ActiveDelegatedUsersComboComponent,
     ],
     imports: [
         ngCommon.CommonModule,

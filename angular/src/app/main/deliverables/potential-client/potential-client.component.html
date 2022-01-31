@@ -1,0 +1,38 @@
+<form [formGroup]="potentialClientForm" class="w-100">
+    <table class="table table-bordered" formArrayName="potentialClients">
+        <tr>
+            <th colspan="2" class="title">
+                Potential Client(s):
+            </th>
+            <th width="150px">
+                <button type="button" (click)="addPotentialClient()" class="btn btn-primary">
+                    <i class="fa fa-plus"></i>Add
+                </button>
+            </th>
+        </tr>
+        <tr *ngFor="let potentialClient of potentialClients().controls; let i=index" [formGroupName]="i">
+            <td>
+                Client Name
+                <input type="text" formControlName="name" class="form-control">
+            </td>
+            <td>
+                Potential Revenue
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">NGN</span>
+                    </div>
+                    <input type="text" formControlName="potentialRevenue" class="form-control">
+                </div>
+            </td>
+            <td>
+                <button (click)="removePotentialClient(i)" class="btn btn-danger mt-4">Remove</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- <button type="submit" class="btn btn-success">Submit</button> -->
+
+</form>
+
+<!-- <br />
+{{this.potentialClientForm.value | json}} -->
