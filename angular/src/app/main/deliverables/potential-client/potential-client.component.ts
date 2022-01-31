@@ -18,6 +18,7 @@ export class PotentialClientComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log(this.pClients, 'PCs');
     }
     potentialClients(): FormArray {
         return this.potentialClientForm.get("potentialClients") as FormArray

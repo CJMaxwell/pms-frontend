@@ -1,4 +1,4 @@
-import { CreateOrEditDeliverableDto, NameValueOfString, CommonLookupServiceProxy, NameValueOfInt32 } from './../../../../shared/service-proxies/service-proxies';
+import { CreateOrEditDeliverableDto, NameValueOfString, CommonLookupServiceProxy, NameValueOfInt32, IPotentialClientDTO } from './../../../../shared/service-proxies/service-proxies';
 import { Component, OnInit, ViewChild, Output, EventEmitter, Injector, ChangeDetectorRef } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { DeliverablesServiceProxy } from '@shared/service-proxies/service-proxies';
@@ -29,6 +29,7 @@ export class CreateEditDeliverableModalComponent extends AppComponentBase implem
 
     deliverable: CreateOrEditDeliverableDto = new CreateOrEditDeliverableDto();
     mdaName = '';
+    resPotentialClients: IPotentialClientDTO[];
 
     filteredPriorityAreas: NameValueOfInt32[];
     priorityArea: any;
@@ -65,6 +66,8 @@ export class CreateEditDeliverableModalComponent extends AppComponentBase implem
             this._deliverableServiceProxy.getDeliverableForEdit(deliverableId).subscribe(result => {
                 this.deliverable = result.deliverable;
                 this.mdaName = result.mdaName;
+                this.resPotentialClients = result.deliverable.potentialClients;
+
 
                 if (result.deliverable.priorityAreaId) {
                     this.priorityArea = new NameValueOfInt32();

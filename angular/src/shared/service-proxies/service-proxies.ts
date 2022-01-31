@@ -18154,8 +18154,8 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
         data["id"] = this.id;
         data["primaryInitiativeOwner"] = this.primaryInitiativeOwner;
         data["secondaryInitiativeOwner"] = this.secondaryInitiativeOwner;
-        data["potentialRevenue"] = this.potentialRevenue;
-        data["actualRevenue"] = this.actualRevenue;
+        data["potentialRevenue"] = +this.potentialRevenue;
+        data["actualRevenue"] = +this.actualRevenue;
         data["potentialClients"] = this.potentialClients;
         return data;
     }
