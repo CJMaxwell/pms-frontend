@@ -54,8 +54,8 @@
 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="secondaryInitiativeOwner">Primary Initiative Owner</label>
-                            <input id="secondaryInitiativeOwner" class="form-control" name="secondaryInitiativeOwner"
+                            <label for="primaryInitiativeOwner">Primary Initiative Owner</label>
+                            <input id="primaryInitiativeOwner" class="form-control" name="primaryInitiativeOwner"
                                 [(ngModel)]="deliverable.primaryInitiativeOwner" />
                         </div>
 
@@ -67,7 +67,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <app-potential-client [pClients]="resPotentialClients" #client>
+                            <app-potential-client [pClients]="deliverable" #client>
                             </app-potential-client>
                         </div>
                     </div>

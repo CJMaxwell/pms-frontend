@@ -18183,6 +18183,9 @@ export interface IPotentialClientDTO {
     potentialRevenue: number | undefined;
 }
 
+export interface IPotentialClientRes extends IPotentialClientDTO {
+    organizationUnitId: number | undefined
+}
 export class GetDeliverableForEditOutput implements IGetDeliverableForEditOutput {
     deliverable!: CreateOrEditDeliverableDto;
     priorityAreaName!: string | undefined;
