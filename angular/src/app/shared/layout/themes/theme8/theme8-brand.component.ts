@@ -13,6 +13,7 @@ import { DOCUMENT } from '@angular/common';
 export class Theme8BrandComponent extends AppComponentBase {
 
     remoteServiceBaseUrl: string = AppConsts.remoteServiceBaseUrl;
+    appLogo = "/assets/common/images/pwc-white-sm.png"
 
     constructor(
         injector: Injector,
