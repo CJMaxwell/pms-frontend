@@ -478,3 +478,12 @@ a.btn.btn-label-brand:hover {
 .kt-font-danger {
     color: #e0301e !important;
 }
+.input-group i {
+    color: #fff !important;
+    line-height: 0;
+}
+.btn.btn-default:hover, .show>.btn.btn-default {
+    color: #fff !important;
+    background: var(--primary-light) !important;
+    border-color: var(--primary-light) !important;
+}
