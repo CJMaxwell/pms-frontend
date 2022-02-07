@@ -18,6 +18,7 @@ export class AccountComponent extends AppComponentBase implements OnInit {
 
     private viewContainerRef: ViewContainerRef;
 
+
     currentYear: number = moment().year();
     remoteServiceBaseUrl: string = AppConsts.remoteServiceBaseUrl;
     tenantChangeDisabledRoutes: string[] = [
