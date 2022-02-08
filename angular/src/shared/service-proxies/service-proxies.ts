@@ -18109,6 +18109,7 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
     potentialRevenue?: number | undefined;
     actualRevenue?: number | undefined;
     potentialClients?: IPotentialClientDTO[] | undefined;
+    teamMembers?: ITeamMemberDTO[] | undefined;
 
     constructor(data?: ICreateOrEditDeliverableDto) {
         if (data) {
@@ -18133,6 +18134,7 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
             this.potentialRevenue = data["potentialRevenue"];
             this.actualRevenue = data["actualRevenue"];
             this.potentialClients = data["potentialClients"];
+            this.teamMembers = data["teamMembers"];
         }
     }
 
@@ -18157,6 +18159,7 @@ export class CreateOrEditDeliverableDto implements ICreateOrEditDeliverableDto {
         data["potentialRevenue"] = +this.potentialRevenue;
         data["actualRevenue"] = +this.actualRevenue;
         data["potentialClients"] = this.potentialClients;
+        data["teamMembers"] = this.teamMembers;
         return data;
     }
 }
@@ -18174,6 +18177,7 @@ export interface ICreateOrEditDeliverableDto {
     potentialRevenue?: number | undefined;
     actualRevenue?: number | undefined;
     potentialClients?: IPotentialClientDTO[] | undefined;
+    teamMembers?: ITeamMemberDTO[] | undefined;
 }
 
 export interface IPotentialClientDTO {
@@ -18181,6 +18185,11 @@ export interface IPotentialClientDTO {
     name: string | undefined,
     description: string | undefined,
     potentialRevenue: number | undefined;
+}
+
+export interface ITeamMemberDTO {
+    id: number | undefined,
+    name: string | undefined,
 }
 
 export interface IPotentialClientRes extends IPotentialClientDTO {

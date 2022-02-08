@@ -1,0 +1,26 @@
+<form [formGroup]="teamForm" class="w-100">
+    <table class="table table-bordered" formArrayName="teamMembers">
+        <tr>
+            <th class="title">
+                Team Members(s):
+            </th>
+            <th width="150px">
+                <button type="button" (click)="addTeamMember()" class="btn btn-primary">
+                    <i class="fa fa-plus"></i>Add
+                </button>
+            </th>
+        </tr>
+        <tr *ngFor="let teamMember of teamMembers().controls; let i=index" [formGroupName]="i">
+            <td>
+                Name
+                <input type="text" formControlName="name" class="form-control">
+            </td>
+
+            <td>
+                <button (click)="removeTeamMember(i, team)" class="btn btn-danger mt-4">Remove</button>
+            </td>
+        </tr>
+    </table>
+
+
+</form>

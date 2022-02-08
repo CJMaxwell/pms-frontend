@@ -73,6 +73,7 @@ import { ViewActivityProgressLogModalComponent } from '@app/main/activity/view-a
 import { ViewActivityComponent } from '@app/main/activity/view-activity/view-activity.component';
 import { PerformanceReviewComponent } from '@app/main/deliverables/reviews/performance-review/performance-review.component';
 import { PotentialClientComponent } from '@app/main/deliverables/potential-client/potential-client.component';
+import { TeamComponent } from '@app/main/deliverables/team/team.component';
 
 @NgModule({
     imports: [
@@ -148,7 +149,8 @@ import { PotentialClientComponent } from '@app/main/deliverables/potential-clien
         SingleLineStringInputTypeComponent,
         ComboboxInputTypeComponent,
         CheckboxInputTypeComponent,
-        PotentialClientComponent
+        PotentialClientComponent,
+        TeamComponent
 
     ],
     exports: [

@@ -26,15 +26,9 @@ export class PotentialClientComponent implements OnInit {
                     description: new FormControl(res.description),
                     id: new FormControl(res.id)
                 })))
-            })
-        }
-
-        // this.feedbackForm = new FormArray(this.data.map(x => new FormGroup({
-        //     'question': new FormControl(x.description),
-        //     'answer': new FormControl('')
-        // })))
-
-    }
+            });
+        };
+    };
     potentialClients(): FormArray {
         return this.potentialClientForm.get("potentialClients") as FormArray
     }

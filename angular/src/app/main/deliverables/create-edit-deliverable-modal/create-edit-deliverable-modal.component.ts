@@ -6,6 +6,7 @@ import { ModalDirective } from 'ngx-bootstrap';
 import { finalize } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { PotentialClientComponent } from '../potential-client/potential-client.component';
+import { TeamComponent } from '../team/team.component';
 
 export interface IDeliverableOnEdit {
     id?: number;
@@ -22,6 +23,7 @@ export class CreateEditDeliverableModalComponent extends AppComponentBase implem
 
     @ViewChild('createOrEditModal', { static: true }) modal: ModalDirective;
     @ViewChild('client', { static: false }) potentialClients: PotentialClientComponent;
+    @ViewChild('team', { static: false }) teamMembers: TeamComponent;
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
     active = false;
@@ -94,6 +96,7 @@ export class CreateEditDeliverableModalComponent extends AppComponentBase implem
 
     save(): void {
         this.deliverable.potentialClients = this.potentialClients.potentialClientForm.value.potentialClients;
+        this.deliverable.teamMembers = this.teamMembers.teamForm.value.teamMembers;
         this.saving = true;
         this._deliverableServiceProxy
             .createOrEdit(this.deliverable)

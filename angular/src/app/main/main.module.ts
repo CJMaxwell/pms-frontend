@@ -22,7 +22,7 @@ import { BsDatepickerModule, BsDatepickerConfig, BsDaterangepickerConfig, BsLoca
 import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bootstrap-datepicker-config.service';
 import { TreeDragDropService } from 'primeng/api';
 import { ViewPriorityAreaComponent } from './priorityAreas/view-priorityArea/view-priorityArea.component';
-import { MDAComponent } from './mdas/mdas/mda.component';
+import { MDAComponent } from './mdas/mdas/mda.component';;
 
 NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
 
@@ -54,7 +54,7 @@ NgxBootstrapDatePickerConfigService.registerNgxBootstrapDatePickerLocales();
         PriorityAreasComponent,
         CreateOrEditPriorityAreaModalComponent,
         DashboardComponent,
-        MDAComponent
+        MDAComponent,
     ],
     providers: [
         TreeDragDropService,
