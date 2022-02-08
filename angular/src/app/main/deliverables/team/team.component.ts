@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { ICreateOrEditDeliverableDto } from '@shared/service-proxies/service-proxies';
 
 @Component({
@@ -19,16 +19,14 @@ export class TeamComponent implements OnInit {
     }
 
     ngOnInit() {
-        // if (this.members) {
-        //     this.teamForm = new FormGroup({
-        //         potentialClients: new FormArray(this.members..map(res => new FormGroup({
-        //             name: new FormControl(res.name),
-        //             potentialRevenue: new FormControl(res.potentialRevenue),
-        //             description: new FormControl(res.description),
-        //             id: new FormControl(res.id)
-        //         })))
-        //     });
-        // };
+        if (this.members) {
+            this.teamForm = new FormGroup({
+                teamMembers: new FormArray(this.members.teamMembers.map(res => new FormGroup({
+                    name: new FormControl(res.name),
+                    id: new FormControl(res.id)
+                })))
+            });
+        };
     }
 
     teamMembers(): FormArray {
