@@ -1,4 +1,4 @@
-import { CreateOrEditDeliverableDto, NameValueOfString, CommonLookupServiceProxy, NameValueOfInt32, IPotentialClientDTO, IPotentialClientRes } from './../../../../shared/service-proxies/service-proxies';
+import { CreateOrEditDeliverableDto, NameValueOfString, CommonLookupServiceProxy, NameValueOfInt32, IPotentialClientDTO, IPotentialClientRes, PriorityAreasServiceProxy, UserServiceProxy, GetPriorityAreaForViewDto, UserListDto } from './../../../../shared/service-proxies/service-proxies';
 import { Component, OnInit, ViewChild, Output, EventEmitter, Injector, ChangeDetectorRef } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { DeliverablesServiceProxy } from '@shared/service-proxies/service-proxies';
@@ -36,17 +36,36 @@ export class CreateEditDeliverableModalComponent extends AppComponentBase implem
     filteredPriorityAreas: NameValueOfInt32[];
     priorityArea: any;
     priorityAreas: NameValueOfInt32[] = new Array<NameValueOfInt32>();
+    opportunityAreas: GetPriorityAreaForViewDto[];
+    pryInitiativeOwners: UserListDto[];
+    secInitiativeOwners: UserListDto[];
+    // filter: string
+    //  sorting: string,
+    //  skipCount: number,
+    //  maxResultCount: number
 
     constructor(
         injector: Injector,
         private _deliverableServiceProxy: DeliverablesServiceProxy,
         private _commonServiceProxy: CommonLookupServiceProxy,
-        private _changeDetector: ChangeDetectorRef
+        private _changeDetector: ChangeDetectorRef,
+        private _priorityAreasServiceProxy: PriorityAreasServiceProxy,
+        private _userServiceProxy: UserServiceProxy
     ) {
         super(injector);
     }
 
     ngOnInit() {
+        this._priorityAreasServiceProxy.getAll().subscribe({
+            next: (res) => this.opportunityAreas = res.items
+        });
+
+        this._userServiceProxy.getUsers().subscribe({
+            next: (res) => {
+                this.pryInitiativeOwners = res.items.filter(user => user.roles.find(u => u.roleName == "Primary Initiative Owner"));
+                this.secInitiativeOwners = res.items.filter(user => user.roles.find(u => u.roleName == "Secondary Initiative Owner"));
+            }
+        })
     }
 
     onShown(): void {

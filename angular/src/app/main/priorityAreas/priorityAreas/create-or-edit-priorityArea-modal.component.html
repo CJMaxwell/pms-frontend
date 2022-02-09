@@ -31,8 +31,15 @@
                         <label for="PriorityArea_PartnerResponsible">Partner Responsible</label>
                         <!-- <textarea id="PriorityArea_PartnerResponsible" class="form-control" [(ngModel)]="priorityArea.partnerResponsible"
                             name="PartnerResponsible" rows="5"></textarea> -->
-                        <input type="text" id="PriorityArea_PartnerResponsible" class="form-control"
-                            [(ngModel)]="priorityArea.partnerResponsible" name="partnerResponsible" required />
+                        <!-- <input type="text" id="PriorityArea_PartnerResponsible" class="form-control"
+                            [(ngModel)]="priorityArea.partnerResponsible" name="partnerResponsible" required /> -->
+
+                        <select required class="form-control" [(ngModel)]="priorityArea.partnerResponsible"
+                            name="partnerResponsible" id="PriorityArea_PartnerResponsible">
+                            <option [ngValue]="">Select Partner Responsible</option>
+                            <option *ngFor="let partner of partners" [ngValue]="partner.emailAddress">
+                                {{partner.name}} {{partner.surname}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

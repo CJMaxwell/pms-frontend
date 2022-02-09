@@ -30,7 +30,7 @@
                         <validation-messages [formCtrl]="deliverableDisplayName"></validation-messages>
                     </div>
 
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="SingleSelectInput" class="col-lg-12">Opportunity Area</label>
                         <div class="col-lg-10 col-md-9 col-sm-8">
                             <p-autoComplete [(ngModel)]="priorityArea" id="SingleSelectInput"
@@ -40,9 +40,17 @@
                                 styleClass="width-percent-100">
                             </p-autoComplete>
                         </div>
-                        <!-- <div class="col-lg-2 col-md-3 col-sm-4">
-                            <button class="btn btn-primary" (click)="selectPriorityArea()" type="button">{{"Submit" | localize}}</button>
-                        </div> -->
+                    </div> -->
+
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <label for="opportArea" class="col-lg-12">Opportunity Area</label>
+                        <select required class="form-control" [(ngModel)]="deliverable.priorityAreaId"
+                            name="PriorityArea" id="opportArea">
+                            <option [ngValue]="">Select Opportunity Area</option>
+                            <option *ngFor="let opportunityArea of opportunityAreas"
+                                [ngValue]="opportunityArea.priorityArea.id">
+                                {{opportunityArea.priorityArea.name}}</option>
+                        </select>
                     </div>
 
 
@@ -55,14 +63,28 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="primaryInitiativeOwner">Primary Initiative Owner</label>
-                            <input id="primaryInitiativeOwner" class="form-control" name="primaryInitiativeOwner"
-                                [(ngModel)]="deliverable.primaryInitiativeOwner" />
+                            <!-- <input id="primaryInitiativeOwner" class="form-control" name="primaryInitiativeOwner"
+                                [(ngModel)]="deliverable.primaryInitiativeOwner" /> -->
+                            <select required class="form-control" [(ngModel)]="deliverable.primaryInitiativeOwner"
+                                name="primaryInitiativeOwner" id="primaryInitiativeOwner">
+                                <option [ngValue]="">Select a Primary Initiative Owner</option>
+                                <option *ngFor="let pryInitiativeOwner of pryInitiativeOwners"
+                                    [ngValue]="pryInitiativeOwner.emailAddress">
+                                    {{pryInitiativeOwner.name}} {{pryInitiativeOwner.surname}}</option>
+                            </select>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="secondaryInitiativeOwner">Secondary Initiative Owner</label>
-                            <input id="secondaryInitiativeOwner" class="form-control" name="secondaryInitiativeOwner"
-                                [(ngModel)]="deliverable.secondaryInitiativeOwner" />
+                            <!-- <input id="secondaryInitiativeOwner" class="form-control" name="secondaryInitiativeOwner"
+                                [(ngModel)]="deliverable.secondaryInitiativeOwner" /> -->
+                            <select required class="form-control" [(ngModel)]="deliverable.secondaryInitiativeOwner"
+                                name="secondaryInitiativeOwner" id="secondaryInitiativeOwner">
+                                <option [ngValue]="">Select a Secondary Initiative Owner</option>
+                                <option *ngFor="let secInitiativeOwner of secInitiativeOwners"
+                                    [ngValue]="secInitiativeOwner.emailAddress">
+                                    {{secInitiativeOwner.name}} {{secInitiativeOwner.surname}}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">

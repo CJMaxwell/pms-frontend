@@ -1,7 +1,7 @@
 ﻿import { Component, ViewChild, Injector, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { finalize } from 'rxjs/operators';
-import { PriorityAreasServiceProxy, CreateOrEditPriorityAreaDto } from '@shared/service-proxies/service-proxies';
+import { PriorityAreasServiceProxy, CreateOrEditPriorityAreaDto, UserServiceProxy, UserListDto } from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import * as moment from 'moment';
 
@@ -17,6 +17,8 @@ export class CreateOrEditPriorityAreaModalComponent extends AppComponentBase {
 
     active = false;
     saving = false;
+    partners: UserListDto[];
+
 
     priorityArea: CreateOrEditPriorityAreaDto = new CreateOrEditPriorityAreaDto();
 
@@ -24,9 +26,18 @@ export class CreateOrEditPriorityAreaModalComponent extends AppComponentBase {
 
     constructor(
         injector: Injector,
-        private _priorityAreasServiceProxy: PriorityAreasServiceProxy
+        private _priorityAreasServiceProxy: PriorityAreasServiceProxy,
+        private _userServiceProxy: UserServiceProxy
     ) {
         super(injector);
+    }
+
+    ngOnInit() {
+        this._userServiceProxy.getUsers().subscribe({
+            next: (res) => {
+                this.partners = res.items.filter(user => user.roles.find(u => u.roleName == "Partner"));
+            }
+        })
     }
 
     show(priorityAreaId?: number): void {

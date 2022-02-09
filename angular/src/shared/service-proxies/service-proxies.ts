@@ -9916,7 +9916,7 @@ export class PriorityAreasServiceProxy {
      * @param maxResultCount (optional)
      * @return Success
      */
-    getAll(filter: string | null | undefined, sorting: string | null | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<PagedResultDtoOfGetPriorityAreaForViewDto> {
+    getAll(filter?: string | null | undefined, sorting?: string | null | undefined, skipCount?: number | undefined, maxResultCount?: number | undefined): Observable<PagedResultDtoOfGetPriorityAreaForViewDto> {
         let url_ = this.baseUrl + "/api/services/app/PriorityAreas/GetAll?";
         if (filter !== undefined)
             url_ += "Filter=" + encodeURIComponent("" + filter) + "&";
@@ -13954,7 +13954,7 @@ export class UserServiceProxy {
      * @param skipCount (optional)
      * @return Success
      */
-    getUsers(filter: string | null | undefined, permissions: string[] | null | undefined, role: number | null | undefined, onlyLockedUsers: boolean | undefined, sorting: string | null | undefined, maxResultCount: number | undefined, skipCount: number | undefined): Observable<PagedResultDtoOfUserListDto> {
+    getUsers(filter?: string | null | undefined, permissions?: string[] | null | undefined, role?: number | null | undefined, onlyLockedUsers?: boolean | undefined, sorting?: string | null | undefined, maxResultCount?: number | undefined, skipCount?: number | undefined): Observable<PagedResultDtoOfUserListDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetUsers?";
         if (filter !== undefined)
             url_ += "Filter=" + encodeURIComponent("" + filter) + "&";
