@@ -1,10 +1,11 @@
 import { Component, Injector } from '@angular/core';
 import { NgxSpinnerTextService } from '@app/shared/ngx-spinner-text.service';
 
+// 5ba7ea
 @Component({
     selector: 'app-root',
     template: `<router-outlet></router-outlet>
-    <ngx-spinner type="ball-clip-rotate" size="medium" color="#5ba7ea">
+    <ngx-spinner type="ball-clip-rotate" size="medium" color="#A63A2C">
         <p>{{ngxSpinnerText.currentText}}</p>
     </ngx-spinner>
     `

@@ -46,7 +46,7 @@ export class BusyIfDirective implements OnChanges {
 
         component.type = 'ball-clip-rotate';
         component.size = 'medium';
-        component.color = '#5ba7ea';
+        component.color = '#A63A2C';
     }
 
     ngOnChanges(changes: SimpleChanges): void {

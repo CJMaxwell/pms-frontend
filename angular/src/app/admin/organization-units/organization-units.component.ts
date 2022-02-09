@@ -8,6 +8,8 @@ import { IBasicOrganizationUnitInfo } from './basic-organization-unit-info';
 import { PerformanceIndicatorsComponent } from '@app/main/indicators/PerformanceIndicators/PerformanceIndicators.component';
 import { PerformanceActivityComponent } from '@app/main/activity/performanceActivity/performanceActivity.component';
 import { PerformanceReviewComponent } from '@app/main/deliverables/reviews/performance-review/performance-review.component';
+import { CreateEditDeliverableModalComponent } from '@app/main/deliverables/create-edit-deliverable-modal/create-edit-deliverable-modal.component';
+
 
 @Component({
     templateUrl: './organization-units.component.html',
@@ -17,14 +19,19 @@ export class OrganizationUnitsComponent extends AppComponentBase {
 
     //@ViewChild('ouMembers', {static: true}) ouMembers: OrganizationUnitMembersComponent;
     //@ViewChild('ouRoles', {static: true}) ouRoles: OrganizationUnitRolesComponent;
-    @ViewChild('ouIndicators', {static: true}) ouIndicators: PerformanceIndicatorsComponent;
-    @ViewChild('ouActivities', {static: true}) ouActivities: PerformanceActivityComponent;
-    @ViewChild('ouReviews', {static: true}) ouReviews: PerformanceReviewComponent;
-    @ViewChild('ouTree', {static: true}) ouTree: OrganizationTreeComponent;
+    @ViewChild('ouIndicators', { static: true }) ouIndicators: PerformanceIndicatorsComponent;
+    @ViewChild('ouActivities', { static: true }) ouActivities: PerformanceActivityComponent;
+    @ViewChild('ouReviews', { static: true }) ouReviews: PerformanceReviewComponent;
+    @ViewChild('ouTree', { static: true }) ouTree: OrganizationTreeComponent;
+    @ViewChild('createOrEditDeliverableModal', { static: true }) createOrEditDeliverableModal: CreateEditDeliverableModalComponent;
+
+
     organizationUnit: IBasicOrganizationUnitInfo = null;
 
+
+
     constructor(
-        injector: Injector
+        injector: Injector,
     ) {
         super(injector);
     }
@@ -37,4 +44,9 @@ export class OrganizationUnitsComponent extends AppComponentBase {
         this.ouActivities.organizationUnit = event;
         this.ouReviews.organizationUnit = event;
     }
+    addDeliverable(): void {
+        console.log(this.organizationUnit, 'org');
+        this.createOrEditDeliverableModal.show(this.organizationUnit.id, this.organizationUnit.displayName, null);
+    }
+
 }

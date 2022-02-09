@@ -32,12 +32,18 @@
                 </div>
                 <div class="col-xl-7 col-lg-6">
                     <div class="kt-portlet">
-                        <div class="kt-portlet__head">
-                            <div class="kt-portlet__head-label">
+                        <div class="kt-portlet__head d-flex justify-content-between"
+                            style="min-height: 40px !important;">
+                            <div class="kt-portlet__head-label" style="max-width: 70% !important;">
                                 <h3 class="kt-portlet__head-title">
                                     <span *ngIf="organizationUnit">{{organizationUnit.displayName}}</span>
                                 </h3>
                             </div>
+                            <button (click)="addDeliverable()" class="btn btn-primary"
+                                style="max-height: 40px !important;" *ngIf="organizationUnit">
+                                <i class="fa fa-plus"></i>
+                                Add Initiative
+                            </button>
                         </div>
                         <div class="kt-portlet__body">
                             <tabset class="tab-container">
@@ -69,3 +75,5 @@
         </div>
     </div>
 </div>
+<app-create-edit-deliverable-modal #createOrEditDeliverableModal>
+</app-create-edit-deliverable-modal>

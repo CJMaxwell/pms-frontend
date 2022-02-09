@@ -133,8 +133,10 @@
 
                     <div class="form-group">
                         <label for="performanceActivity_Comment">Additional Information</label>
-                        <p-editor [(ngModel)]="performanceActivity.note" name="Comment" [style]="{'height':'150px'}">
-                        </p-editor>
+                        <!-- <p-editor [(ngModel)]="performanceActivity.note" name="Comment" [style]="{'height':'150px'}">
+                        </p-editor> -->
+                        <textarea [(ngModel)]="performanceActivity.note" class="form-control" name="Comment"
+                            id="performanceActivity_Comment" cols="30" rows="5"></textarea>
                     </div>
 
                     <div class="form-group">

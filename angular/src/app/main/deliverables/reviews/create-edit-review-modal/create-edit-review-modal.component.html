@@ -15,22 +15,29 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="PerformanceReview_Comment">{{l("Achievements")}}</label>
-                        <p-editor [(ngModel)]="review.reviewComment" name="Comment" [style]="{'height':'150px'}"
-                            required></p-editor>
+                        <!-- <p-editor [(ngModel)]="review.reviewComment" name="Comment" [style]="{'height':'150px'}"
+                            required></p-editor> -->
+
+                        <textarea class="form-control" [(ngModel)]="review.reviewComment" required name="Comment"
+                            id="PerformanceReview_Comment" cols="30" rows="5"></textarea>
                     </div>
 
                     <div class="form-group">
                         <!-- <label for="PerformanceReview_Challenges">{{l("Challenges")}}</label> -->
+                        <!-- <p-editor [(ngModel)]="review.challenges" name="Challenges" [style]="{'height':'150px'}">
+                        </p-editor> -->
                         <label for="PerformanceReview_Challenges">Risks</label>
-                        <p-editor [(ngModel)]="review.challenges" name="Challenges" [style]="{'height':'150px'}">
-                        </p-editor>
+                        <textarea class="form-control" [(ngModel)]="review.challenges" required name="Challenges"
+                            id="PerformanceReview_Challenges" cols="30" rows="5"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <!-- <label for="PerformanceReview_Recommendation">{{l("Recommendation")}}</label> -->
-                        <label for="PerformanceReview_Recommendation">Mitigation actions</label>
+                        <!-- <label for="PerformanceReview_Recommendation">{{l("Recommendation")}}</label>
                         <p-editor [(ngModel)]="review.recommendation" name="Recommendation"
-                            [style]="{'height':'150px'}"></p-editor>
+                            [style]="{'height':'150px'}"></p-editor> -->
+                        <label for="PerformanceReview_Recommendation">Mitigation actions</label>
+                        <textarea class="form-control" [(ngModel)]="review.recommendation" required
+                            name="Recommendation" id="PerformanceReview_Recommendation" cols="30" rows="5"></textarea>
                     </div>
 
                     <div class="form-group">
