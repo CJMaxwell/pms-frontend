@@ -9,6 +9,7 @@ export class FooterComponent extends AppComponentBase implements OnInit {
 
     releaseDate: string;
     @Input() useBottomDiv = true;
+    currentYear: Date;
 
     constructor(
         injector: Injector
@@ -18,5 +19,6 @@ export class FooterComponent extends AppComponentBase implements OnInit {
 
     ngOnInit(): void {
         this.releaseDate = this.appSession.application.releaseDate.format('YYYYMMDD');
+        this.currentYear = new Date();
     }
 }

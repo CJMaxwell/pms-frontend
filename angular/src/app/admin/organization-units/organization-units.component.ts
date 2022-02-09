@@ -45,7 +45,6 @@ export class OrganizationUnitsComponent extends AppComponentBase {
         this.ouReviews.organizationUnit = event;
     }
     addDeliverable(): void {
-        console.log(this.organizationUnit, 'org');
         this.createOrEditDeliverableModal.show(this.organizationUnit.id, this.organizationUnit.displayName, null);
     }
 

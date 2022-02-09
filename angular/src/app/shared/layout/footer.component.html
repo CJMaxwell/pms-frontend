@@ -7,15 +7,15 @@
                     <img src="/assets/common/images/pwc-white-sm.png" class="" style="margin-top: -15px;" height="35px">
                 </span>
             </div>
-            <div class="kt-footer__copyright kt-font-light" >
-                Performance Management System | <i class="fa fa-copyright"></i> 2020
+            <div class="kt-footer__copyright kt-font-light">
+                Performance Management System | <i class="fa fa-copyright"></i> {{currentYear | date: 'yyyy'}}
             </div>
         </div>
     </div>
     <div [class]="containerClass" *ngIf="!useBottomDiv">
         <div class="kt-footer__wrapper mt-2" style="width: 100%">
             <div class="kt-footer__copyright" style="width: 100%">
-                Performance Management System | 
+                Performance Management System |
                 <span class="pull-right" style="margin-top: 5px;">
                     Powered by
                     <img src="/assets/common/images/pwc-logo.png" class="" style="margin-top: -15px;" height="35px">
