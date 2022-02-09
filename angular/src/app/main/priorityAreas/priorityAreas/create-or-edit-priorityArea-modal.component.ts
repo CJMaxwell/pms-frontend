@@ -34,9 +34,7 @@ export class CreateOrEditPriorityAreaModalComponent extends AppComponentBase {
 
     ngOnInit() {
         this._userServiceProxy.getUsers().subscribe({
-            next: (res) => {
-                this.partners = res.items.filter(user => user.roles.find(u => u.roleName == "Partner"));
-            }
+            next: (res) => this.partners = res.items.filter(user => user.roles.find(u => u.roleName == "Partner"))
         })
     }
 
@@ -51,7 +49,6 @@ export class CreateOrEditPriorityAreaModalComponent extends AppComponentBase {
         } else {
             this._priorityAreasServiceProxy.getPriorityAreaForEdit(priorityAreaId).subscribe(result => {
                 this.priorityArea = result.priorityArea;
-
 
                 this.active = true;
                 this.modal.show();
@@ -72,12 +69,6 @@ export class CreateOrEditPriorityAreaModalComponent extends AppComponentBase {
                 this.modalSave.emit(null);
             });
     }
-
-
-
-
-
-
 
     close(): void {
         this.active = false;
